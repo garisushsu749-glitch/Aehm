@@ -185,14 +185,99 @@
         .credits strong { color: var(--primary-color); display: block; margin-bottom: 5px; font-size: 1rem; }
         .credits .credit-line { display: block; margin-bottom: 3px; }
 
-        /* ... (تنسيقات modal, modal-content, stage-item, subject-item لم تتغير) ... */
-        
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal-content { background-color: var(--background-app); padding: 30px; border-radius: 20px; width: 90%; max-width: 450px; box-shadow: var(--card-shadow); color: var(--text-color); position: relative; transform: scale(0.9); animation: modal-open 0.3s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94); max-height: 90vh; overflow-y: auto; }
+        /* ==================================== */
+        /* تنسيقات النوافذ المنبثقة (Modal) */
+        /* ==================================== */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            justify-content: center; 
+            align-items: center; 
+            backdrop-filter: blur(5px); 
+        }
+        /* تعديل خاص لنافذة القارئ لجعلها تملأ الشاشة بالكامل */
+        #bookReader {
+            background-color: var(--background-app); /* خلفية التطبيق */
+            z-index: 2000; /* فوق كل شيء */
+            padding: 0;
+        }
+
+        .modal-content { 
+            background-color: var(--background-app); 
+            padding: 30px; 
+            border-radius: 20px; 
+            width: 90%; 
+            max-width: 450px; 
+            box-shadow: var(--card-shadow); 
+            color: var(--text-color); 
+            position: relative; 
+            transform: scale(0.9); 
+            animation: modal-open 0.3s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            max-height: 90vh; 
+            overflow-y: auto; 
+        }
+        /* تنسيق خاص لمحتوى القارئ */
+        #bookReader .modal-content {
+             max-width: 100%;
+             max-height: 100%;
+             width: 100%;
+             height: 100%;
+             padding: 0;
+             border-radius: 0;
+             box-shadow: none;
+             overflow: hidden; /* إخفاء شريط التمرير من المحتوى */
+        }
+        /* تنسيق iframe القارئ */
+        #book-iframe {
+            width: 100%;
+            height: calc(100% - 70px); /* عرض الإطار بحجم الشاشة - ارتفاع الهيدر */
+            border: none;
+            display: block;
+            background-color: #e0f7fa;
+        }
+        #bookReader .header-reader {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             height: 70px;
+             padding: 0 20px;
+             border-bottom: 1px solid var(--input-bg);
+        }
+        #bookReader .header-reader h2 {
+             font-size: 1.4rem;
+             color: var(--primary-color);
+             margin: 0;
+             padding: 0;
+             border-bottom: none;
+        }
+
+
         @keyframes modal-open { to { transform: scale(1); } }
         .modal-content h2 { color: var(--primary-color); border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; margin-bottom: 25px; font-size: 1.6rem; display: flex; align-items: center; }
         .modal-content .close-button { position: absolute; top: 15px; left: 15px; color: var(--text-color); font-size: 30px; font-weight: 300; background: none; width: auto; height: auto; line-height: 1; padding: 0; cursor: pointer; }
         .modal-content .close-button:hover { color: var(--secondary-color); }
+        
+        #bookReader .close-button {
+             position: static; /* إزالة التثبيت */
+             color: #dc3545; /* لون أحمر للإغلاق */
+             font-size: 1.2rem;
+             padding: 10px 15px;
+             background-color: var(--input-bg);
+             border-radius: 10px;
+        }
+        #bookReader .close-button:hover {
+            background-color: #eee;
+        }
+        .dark-mode #bookReader .close-button:hover {
+            background-color: #3a3a3a;
+        }
+        
         .back-button { background-color: #dc3545; color: white; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; display: block; width: 100%; text-align: center; box-shadow: 0 4px 10px rgba(220, 53, 69, 0.4); }
         .stage-list, .subject-list { list-style-type: none; padding: 0; }
         .stage-item, .subject-item { padding: 18px; margin-bottom: 12px; background-color: var(--input-bg); border-radius: 15px; cursor: pointer; transition: all var(--transition-speed); display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: var(--text-color); border-right: 5px solid var(--primary-color); }
@@ -434,6 +519,14 @@
                     </span>
                     <span class="button-text">مفضلتي</span>
                 </button>
+                
+                 <button class="grid-button" onclick="openModal('warningsPunishments')">
+                    <span class="button-icon" style="color: #dc3545;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </span>
+                    <span class="button-text">الإنذارات والغيابات</span>
+                </button>
+                
                 <button class="grid-button" onclick="openModal('settings')">
                     <span class="button-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1.51-1V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -470,10 +563,10 @@
         
         <footer class="credits">
             <strong>جميع حقوق الملكية محفوظة لـ:</strong>
-            <span class="credit-line">طلاب قسم الالكترونيك والسيطرة</span>
-            <span class="credit-line">المبرمج: ايهم فراس جمال</span>
-            <span class="credit-line">المساعد: حسين علي دنيف</span>
-            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">بإشراف: المهندسة مياس حارث</span>
+            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">اشراف : المهندسة مياس حارث</span>
+            <span class="credit-line">المبرمج : ايهم فراس جمال</span>
+            <span class="credit-line">المساعد : حسين علي دنيف</span>
+            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">قسم الكترونيك والسيطرة</span>
         </footer>
     </div>
     
@@ -511,6 +604,43 @@
             <p style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: #777;">
                 * لتغيير معلوماتك، يرجى تسجيل الخروج وإعادة الدخول بالبيانات الجديدة.
             </p>
+        </div>
+    </div>
+    
+    <div id="warningsPunishments" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('warningsPunishments')">&times;</span>
+            <h2><span style="font-size: 1.5rem; color: #dc3545; margin-left: 10px;">⚠️</span> سجل الإنذارات والغيابات</h2>
+
+            <div class="content-box" style="border-right: 5px solid var(--primary-color);">
+                <h4><span style="margin-left: 8px;">⚙️</span> إدارة سجل الإنذارات والغيابات</h4>
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: #6c757d;">
+                    (هذا القسم مخصص للمسؤولين) أدخل اسم الطالب لغرض البحث أو التعديل على سجله.
+                </p>
+                <div class="input-group" style="margin-bottom: 10px;">
+                    <input type="text" id="admin-search-student-name" class="input-group" placeholder="اسم الطالب بالكامل (للبحث/التعديل)" required>
+                </div>
+                
+                <button class="login-button" style="padding: 12px; font-size: 1rem; margin-top: 5px; background: linear-gradient(135deg, #004d40, #00796b);" onclick="searchAndEditAbsences()">
+                    <span style="margin-left: 10px;">🔍</span> بحث وتعديل الغيابات/الإنذارات
+                </button>
+                
+                <p id="admin-search-result" style="color: #dc3545; font-weight: 700; margin-top: 15px; display: none; text-align: center;">لم يتم العثور على الطالب.</p>
+            </div>
+            
+            <h3 style="margin-top: 30px; color: var(--primary-color);">سجل الإنذارات والغيابات المشترك للجميع</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #6c757d;">
+                الطلاب المسجلون أدناه تظهر سجلاتهم لجميع مستخدمي التطبيق كقائمة مشتركة.
+            </p>
+            
+            <ul id="shared-warnings-list" class="stage-list">
+                 <li class="stage-item">
+                    
+                 </li>
+            </ul>
+            
+       </li>
+            </ul>
         </div>
     </div>
     
@@ -653,10 +783,10 @@
             <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">📖</span> قارئ الدرس الرقمي</h2>
             <div class="content-box">
                 <h4>ملاحظة:</h4>
-                <p>هذه الميزة ستقوم بفتح ملفات PDF/محتوى الدرس مباشرة في التطبيق. حالياً، سيتم توجيهك إلى رسالة تنبيه.</p>
+                <p>هذه الميزة ستقوم بفتح ملفات PDF/محتوى الدرس مباشرة في التطبيق. يرجى تصفح المواد والضغط على اسم المادة للبدء في القراءة.</p>
             </div>
-            <button class="main-button" style="height: 60px;" onclick="alert('تفعيل ميزة القراءة الرقمية')">
-                <span class="button-text">ابدأ قراءة درسك</span>
+            <button class="main-button" style="height: 60px;" onclick="closeModal('digitalReader'); openModal('stagesBrowser')">
+                <span class="button-text">ابدأ تصفح المواد</span>
             </button>
         </div>
     </div>
@@ -670,10 +800,12 @@
                 <p>
                     1. قم بملء بيانات تسجيل الدخول. <br>
                     2. استخدم زر "**تصفح الأقسام والمراحل**" للعثور على مادتك. <br>
-                    3. اضغط على رمز **"💖"** لإضافة أي مادة إلى **مفضلتي**. <br>
-                    4. استخدم أيقونة **"👤"** للوصول إلى بيانات حسابك. <br>
-                    5. استخدم أيقونة **"🌙"** لتبديل وضع العرض.
-                    6. استخدم زر **"🤖"** للوصول إلى **المساعد الذكي** لحل الأسئلة.
+                    3. **اضغط على اسم المادة** في قائمة المواد لفتحها مباشرة داخل التطبيق (القارئ الرقمي). <br>
+                    4. اضغط على رمز **"💖"** لإضافة أي مادة إلى **مفضلتي**. <br>
+                    5. استخدم أيقونة **"👤"** للوصول إلى بيانات حسابك. <br>
+                    6. استخدم أيقونة **"🌙"** لتبديل وضع العرض.
+                    7. استخدم زر **"🤖"** للوصول إلى **المساعد الذكي** لحل الأسئلة.
+                    8. استخدم زر **"⚠️"** للدخول إلى سجل **الإنذارات والغيابات** المشترك.
                 </p>
             </div>
         </div>
@@ -698,6 +830,17 @@
         </div>
     </div>
 
+    <div id="bookReader" class="modal">
+        <div class="modal-content">
+            <div class="header-reader">
+                <h2 id="reader-book-title">قارئ الدرس الرقمي</h2>
+                <button class="close-button" onclick="closeModal('bookReader')">
+                    إغلاق القارئ &times;
+                </button>
+            </div>
+            <iframe id="book-iframe" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <script>
         
@@ -731,12 +874,18 @@
         const profileSection = document.getElementById('profile-section');
         const profileStage = document.getElementById('profile-stage');
 
+        // عناصر القارئ الرقمي (الجديدة)
+        const bookReaderModal = document.getElementById('bookReader');
+        const readerBookTitle = document.getElementById('reader-book-title');
+        const bookIframe = document.getElementById('book-iframe');
+
+
         // متغير عالمي لحفظ مفتاح القسم الحالي للعودة إليه
         window.currentSectionKey = ''; 
         window.currentStageName = '';
         
         // ===========================================
-        // ==  بيانات الكتب والأقسام (لم يتم التغيير) ==
+        // ==  بيانات الكتب والأقسام (تم التحديث هنا) ==
         // ===========================================
         
         const officialLink = "https://t.me/MansourIndustrial";
@@ -746,45 +895,9 @@
             return { id, name, type, stageName, edition, link };
         }
 
-        // الرابط الخاص بكتاب العربي للمرحلة الأولى
+        // الرابط الخاص بكتاب العربي للمرحلة الأولى (تم الإبقاء عليه كما هو)
         const arabicBookLink = "https://drive.google.com/file/d/1akmTSA25Jhc_e7dEvuilVp-j5yHtskAa/view?usp=drivesdk";
 
-
-        const commonSubjects_elec_elecs = [
-            createSubject("أسس الهندسة الكهربائية", "كتاب تخصصي", "الأول", "إصدار 2024"),
-            createSubject("الدوائر المنطقية", "كتاب تخصصي", "الثاني", "إصدار 2024"),
-            createSubject("المولدات والمحولات", "كتاب تخصصي", "الثالث", "إصدار 2024")
-        ];
-        
-        const medSubjects = [
-            createSubject("الدوائر الكهربائية والإلكترونية", "كتاب تخصصي", "الأول", "إصدار 2024"),
-            createSubject("الأجهزة الطبية التشخيصية", "كتاب تخصصي", "الثاني", "إصدار 2024"),
-            createSubject("صيانة وإدامة الأجهزة الطبية", "كتاب تخصصي", "الثالث", "إصدار 2024")
-        ];
-
-        const generalSubjects = {
-            '1': [
-                // تم تحديث الروابط لمواد المرحلة الأولى العامة
-                createSubject("الطبيعيات", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1Cksio3xL_nWvID6Y5dE9UdsmUTfYVKgP/view?usp=drivesdk"),
-                // تم تعديل رابط اللغة العربية هنا لجميع الأقسام
-                createSubject("اللغة العربية", "كتاب أساسي", "الأول", "إصدار 2024", arabicBookLink), 
-                createSubject("الرياضيات", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1jaw_uezg0dqvksQjw8eSpaFZcWZ9xioo/view?usp=drivesdk"),
-                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1elxsf26Ak1CwQuDWQpyShaCrV2APz_5s/view?usp=drivesdk"),
-                // إضافة التربية الإسلامية مع الرابط
-                createSubject("التربية الإسلامية", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1VDPFugXETjtVZ3hk3dJs_BxHaEwJkQrq/view?usp=drivesdk")
-            ],
-            '2': [
-                createSubject("الطبيعيات", "كتاب أساسي", "الثاني", "إصدار 2024"),
-                createSubject("اللغة العربية", "كتاب أساسي", "الثاني", "إصدار 2024"),
-                createSubject("الرياضيات", "كتاب أساسي", "الثاني", "إصدار 2024"),
-                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الثاني", "إصدار 2024")
-            ],
-            '3': [
-                createSubject("اللغة العربية", "كتاب أساسي", "الثالث", "إصدار 2024"),
-                createSubject("الرياضيات", "كتاب أساسي", "الثالث", "إصدار 2024"),
-                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الثالث", "إصدار 2024")
-            ]
-        };
 
         const stageNames = {
             '1': "الأول المهني",
@@ -792,27 +905,155 @@
             '3': "الثالث المهني",
         };
 
+        // تحديث مواد العامة المشتركة بالروابط الجديدة التي قدمها المستخدم
+        const generalSubjects = {
+            '1': [
+                // المواد العامة للمرحلة الأولى - تم الإبقاء على القديم، لا يوجد جديد
+                createSubject("الطبيعيات", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1Cksio3xL_nWvID6Y5dE9UdsmUTfYVKgP/view?usp=drivesdk"),
+                createSubject("اللغة العربية", "كتاب أساسي", "الأول", "إصدار 2024", arabicBookLink), 
+                createSubject("الرياضيات", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1jaw_uezg0dqvksQjw8eSpaFZcWZ9xioo/view?usp=drivesdk"),
+                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1elxsf26Ak1CwQuDWQpyShaCrV2APz_5s/view?usp=drivesdk"),
+                createSubject("التربية الإسلامية", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1VDPFugXETjtVZ3hk3dJs_BxHaEwJkQrq/view?usp=drivesdk")
+            ],
+            // تحديث المرحلة الثانية بالروابط الجديدة المطلوبة
+            '2': [
+                // تحديث الطبيعيات
+                createSubject("الطبيعيات", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MOGVruBqWuYNpOWL9V7wfvicdvu9yljH/view?usp=drivesdk"),
+                // تحديث اللغة العربية
+                createSubject("اللغة العربية", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1mQj5m_u-J2L69I2Y8eqNCNqROes_s48e/view?usp=drivesdk"),
+                createSubject("الرياضيات", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1l3T0G-_lJ8BPnOaA1PrJeouB7ymIDeiQ/view?usp=drivesdk"),
+                // تحديث اللغة الإنكليزية
+                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/17-fpF6uAwMBRaCcAY21GyK4lp53Dyfoy/view?usp=drivesdk"),
+                createSubject("التربية الإسلامية", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/13Q5_teRTV2ppJvoCxJWODgSqYsWLR7PF/view?usp=drivesdk")
+            ],
+            // تحديث مواد المرحلة الثالثة (الثالث المهني) بالروابط المطلوبة
+            '3': [
+                createSubject("الطبيعيات", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1CNyadt2e29Dhp7hbfHsGcBv0hSVGjliU/view?usp=drivesdk"),
+                // تحديث اللغة العربية
+                createSubject("اللغة العربية", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1D-s2ddrAOVVAnWtcst473tyqXbyGJV78/view?usp=drivesdk"),
+                createSubject("الرياضيات", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1VmFNZOIpJytzxGhssMwRSXJvJseLNhc_/view?usp=drivesdk"),
+                // تحديث اللغة الإنكليزية
+                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1XRYfzOFh1R0eLFfbK0Mk7OreVd6uqEm3/view?usp=drivesdk"),
+                // تحديث التربية الإسلامية
+                createSubject("التربية الإسلامية", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1NtgFUMU4Hb4f86wiNDPlVFWHWnpFIu-t/view?usp=drivesdk")
+            ]
+        };
+
         const vocationalSections = {
             elec: { name: "قسم الكهرباء", link: officialLink, stages: {
-                'elec_1': { name: stageNames['1'], books: [...generalSubjects['1'], commonSubjects_elec_elecs[0], createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الأول", "إصدار 2024")] },
-                'elec_2': { name: stageNames['2'], books: [...generalSubjects['2'], commonSubjects_elec_elecs[1], createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثاني", "إصدار 2024")] },
-                'elec_3': { name: stageNames['3'], books: [...generalSubjects['3'], commonSubjects_elec_elecs[2], createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثالث", "إصدار 2024")] }
+                'elec_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم الصناعية الكهربائية - المرحلة الأولى
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1hHiKutlIOVzBWHGoHYFgxY3QbrxnSpgv/view?usp=drivesdk"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الأول", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الأولى (الرابط المطلوب)
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1VvSKfj5uDh9jWcMS6Z54b85F5StLMcYM/view?usp=drivesdk"), 
+                ] },
+                'elec_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعية الكهربائية - المرحلة الثانية
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1V3O2fG3Ay0wpRzHu_uTY5EakgsqQI-GA/view?usp=drivesdk"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الثاني", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الثانية
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1UO-jcnm7BhIW7–NkdAcmt2YQkO-JBZ-/view?usp=drivesdk"),
+                ] },
+                'elec_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الصناعية الكهربائية - المرحلة الثالثة
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1nDagm7HFt1lj4vsOsk6_dSYgwBxVGdIG/view?usp=drivesdk"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الثالث", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الثالثة
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1yC8O086OBo66IHPrVQfB0HCHFR41fmYF/view?usp=drivesdk"),
+                ] }
             }},
             elecs: { name: "قسم الإلكترونيك والسيطرة", link: officialLink, stages: {
-                'elecs_1': { name: stageNames['1'], books: [...generalSubjects['1'], commonSubjects_elec_elecs[0], createSubject("المبادئ الإلكترونية", "كتاب تخصصي", "الأول", "إصدار 2024")] },
-                'elecs_2': { name: stageNames['2'], books: [...generalSubjects['2'], commonSubjects_elec_elecs[1], createSubject("دوائر السيطرة", "كتاب تخصصي", "الثاني", "إصدار 2024")] },
-                'elecs_3': { name: stageNames['3'], books: [...generalSubjects['3'], commonSubjects_elec_elecs[2], createSubject("المايكروكونترولر", "كتاب تخصصي", "الثالث", "إصدار 2024")] }
+                // تحديث كتب الإلكترونيك والسيطرة بالكتب الجديدة المقدمة
+                'elecs_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // أول إلكترون علوم
+                    createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/16JpBfQ_RJyYwqDsUmMdL_NYsayBanaLq/view?usp=drivesdk"),
+                    // الرسم الصناعي الإلكتروني - تم إزالة رابط التدريب العملي منه
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الأول", "إصدار 2024"), 
+                    // التدريب العملي الإلكتروني - تم إضافة رابط التدريب العملي (مرحلة أولى) المطلوب
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/126WyRH3mv8CuI0yrGkeiTgPSHE5G3qL_/view?usp=drivesdk"), 
+                ] },
+                'elecs_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعيه الكترونيك الثاني
+                    createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MyvqU9lKs3ZfK_aeak4L-mdNUHOqwTn5/view?usp=drivesdk"),
+                    // الرسم الصناعي الكترونيك وسيطرة الثاني
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1Zl094Z0apla7_ZQPQ01DHs-PUfKccy9G/view?usp=drivesdk"),
+                    // التدريب العملي الإلكتروني - تم إضافة رابط التدريب العملي (مرحلة ثانية) المطلوب
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MB0u1mEz5tgjhRV-gAGZv5dwHRTwF8SR/view?usp=drivesdk"), 
+                ] },
+                'elecs_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الصناعي الكترونيك والسيطرة الثالثه
+                    createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1XssU-nGxtHEi3oHUqLFtHCRDLgNmgXjH/view?usp=drivesdk"),
+                    // الرسم الصناعي الكترونيك والسيطرة الثالث
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1hWdVITONaKf8p7D5wZqkYLJjfqIEql4X/view?usp=drivesdk"),
+                    // التدريب العملي إلكترون وسيطره الثالث مهني
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1l-b_ok2-Ogfxk7-mR6Bol99jlVqxplHd/view?usp=drivesdk"),
+                ] }
             }},
             media: { name: "قسم تكنولوجيا الإعلام", link: officialLink, stages: {
-                // إضافة كتاب التدريب العملي لتكنولوجيا الإعلام
-                'media_1': { name: stageNames['1'], books: [...generalSubjects['1'], createSubject("أسس الإعلام", "كتاب تخصصي", "الأول", "إصدار 2024"), createSubject("الغرافيك الرقمي", "كتاب تطبيقي", "الأول", "إصدار 2024"), createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/17qXlKyZGe0wkuM1vPkEoVJ4NP9HDAIc8/view?usp=drivesdk")] },
-                'media_2': { name: stageNames['2'], books: [...generalSubjects['2'], createSubject("مونتاج الفيديو", "كتاب تخصصي", "الثاني", "إصدار 2024"), createSubject("التصوير التلفزيوني", "كتاب عملي", "الثاني", "إصدار 2024")] },
-                'media_3': { name: stageNames['3'], books: [...generalSubjects['3'], createSubject("الإنتاج الإذاعي والتلفزيوني", "كتاب تخصصي", "الثالث", "إصدار 2024"), createSubject("الإخراج الفني", "كتاب عملي", "الثالث", "إصدار 2024")] }
+                // تحديث كتب تكنولوجيا الإعلام بالكتب الجديدة المقدمة
+                'media_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم تكنلوجيا إعلام الاولى
+                    createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1OK95pQuOg3z40WyGFONyy-oYhHkRiUDD/view?usp=drivesdk"),
+                    // الرسم مرحلة أولى تكنلوجيا إعلام (تم التحديث)
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1imUBO6mxJcQcUhEKEpgs_CQ-Hr1uH3Xu/view?usp=drivesdk"), 
+                    // العملي تكنلوجيا إعلام الاول
+                    createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1HgOdWicSSPoL8YWCj2cqMETpnpW1MVP9/view?usp=drivesdk"),
+                ] },
+                'media_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعية تكنلوجيا إعلام الثاني
+                    createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1QaOaG39SWdRmPP_uD0S5VkgV4unYRCZ1/view?usp=drivesdk"),
+                    // الرسم الصناعي تكنلوجيا إعلام الثاني
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1xXyijQ89qYjo93J2a3eMy8TmzpBgprhe/view?usp=drivesdk"),
+                    // التدريب العملي تكنلوجيا إعلام الثاني مهني
+                    createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1FL0sjrjsCQYRraahDiFNoMVsHb0epKVD/view?usp=drivesdk"),
+                ] },
+                'media_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الثالث تكنلوجيا إعلام
+                    createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/15-0kmdpnlbGG228fRBJspH46tThwK56G/view?usp=drivesdk"),
+                    // الرسم الصناعي تكنلوجيا إعلام الصف الثالث مهني
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1zzbzuDKaJbED-1SAkw41wlN2fZb2UmF8/view?usp=drivesdk"),
+                    // التدريب العملي مرحلة الثالث مهني تكنلوجيا إعلام
+                    createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1Oz1NJoe2rmr55RtvEyh1Po3wqq0MHUFp/view?usp=drivesdk"),
+                ] }
             }},
             med: { name: "قسم الأجهزة الطبية", link: officialLink, stages: {
-                'med_1': { name: stageNames['1'], books: [...generalSubjects['1'], medSubjects[0], createSubject("مبادئ التشريح", "كتاب علمي", "الأول", "إصدار 2024")] },
-                'med_2': { name: stageNames['2'], books: [...generalSubjects['2'], medSubjects[1], createSubject("أجهزة العلاج الطبيعي", "كتاب تخصصي", "الثاني", "إصدار 2024")] },
-                'med_3': { name: stageNames['3'], books: [...generalSubjects['3'], medSubjects[2], createSubject("إلكترونيك الأجهزة الطبية", "كتاب تخصصي", "الثالث", "إصدار 2024")] }
+                // تحديث كتب الأجهزة الطبية بالكتب الجديدة المقدمة
+                'med_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم الصناعيه الاول اجهزه طبيع
+                    createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1Bi3nBz6R-MAE4eyCvpKMuWxlmmBcmypb/view?usp=drivesdk"),
+                    // التدريب العملي الصناعي اجهزه طبيه الاول
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1qfaQUpMnMmTrDqe-z0mF-xXPboLyDuMv/view?usp=drivesdk"),
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الأول", "إصدار 2024"), 
+                ] },
+                'med_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // علوم أجهزه طبيه الثاني
+                    createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1hBiVoeMEX1bXyN_9qnPAzwtLxZcaP1TY/view?usp=drivesdk"),
+                    // الرسم الصناعي اجهزه طبية الصف الثاني
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1KeJDy3y4swTwszo640Ts0Xjllga6i_U2/view?usp=drivesdk"),
+                    // التدريب العملي الاجهزه الطبية للصف الثاني
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1gU8tFy0gUxe_Sngx1U51hBlF01QO_ExY/view?usp=drivesdk"),
+                ] },
+                'med_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الاجهزه طبية الصف الثالث مهني 
+                    createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1RFvJKEfKmmDrUimYpd60iVfb05g-hQcQ/view?usp=drivesdk"),
+                    // رسم مرحلة ثالثه اجهزه طبية (تم التحديث)
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1qXF-gEcc1bFPxMQsN8k4eARjNvhqBZNv/view?usp=drivesdk"), 
+                    // العملي اجهزه طبية مرحلة ثالثة (تم التحديث)
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1elVyGMVsHGdTdHFzGhJfS6W2v0Ki2Idy/view?usp=drivesdk"), 
+                ] }
             }},
             general: { name: "المواد العامة المشتركة", link: officialLink, stages: {
                 'general_1': { name: stageNames['1'], books: generalSubjects['1'] },
@@ -998,4 +1239,470 @@
             });
             // تحديث رسالة قائمة المفضلة في حال كانت القائمة فارغة بعد الفلترة
             if (document.getElementById('myFavorites').style.display === 'flex') {
-                const 
+                const visibleFavorites = Array.from(favoritesList.querySelectorAll('.favorite-list-item')).some(item => item.style.display !== 'none');
+                emptyFavoritesMessage.style.display = visibleFavorites ? 'none' : 'block';
+            }
+        }
+        
+        browserSearchInput.addEventListener('input', filterBrowserContent);
+        
+        function getFavorites() {
+            const favorites = localStorage.getItem('favorites');
+            return favorites ? JSON.parse(favorites) : [];
+        }
+
+        function saveFavorites(favorites) {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        function isFavorite(subjectId) {
+            const favorites = getFavorites();
+            return favorites.some(fav => fav.id === subjectId);
+        }
+
+        function toggleFavorite(subject) {
+            let favorites = getFavorites();
+            const index = favorites.findIndex(fav => fav.id === subject.id);
+            const favButton = document.querySelector(`.favorite-toggle[onclick*="'${subject.id}'"]`);
+
+            if (index !== -1) {
+                // حذف من المفضلة
+                favorites.splice(index, 1);
+                alert(`تم حذف "${subject.name}" من المفضلة.`);
+                if(favButton) { favButton.classList.remove('is-favorite'); favButton.innerHTML = '🤍'; }
+            } else {
+                // إضافة إلى المفضلة
+                favorites.push(subject);
+                alert(`تمت إضافة "${subject.name}" إلى المفضلة.`);
+                if(favButton) { favButton.classList.add('is-favorite'); favButton.innerHTML = '💖'; }
+            }
+            saveFavorites(favorites);
+            if (document.getElementById('myFavorites').style.display === 'flex') {
+                displayFavorites();
+            }
+        }
+        
+        function removeFavorite(subjectId) {
+             let favorites = getFavorites();
+            const index = favorites.findIndex(fav => fav.id === subjectId);
+            if (index !== -1) {
+                 const name = favorites[index].name;
+                 favorites.splice(index, 1);
+                 saveFavorites(favorites);
+                 const favButton = document.querySelector(`.favorite-toggle[onclick*="'${subjectId}'"]`);
+                 if(favButton) {
+                     favButton.classList.remove('is-favorite');
+                     favButton.innerHTML = '🤍';
+                 }
+                 alert(`تم حذف "${name}" من المفضلة.`);
+                 displayFavorites();
+            }
+        }
+
+        function displayFavorites() {
+            const favorites = getFavorites();
+            favoritesList.innerHTML = '';
+            
+            if (favorites.length === 0) {
+                emptyFavoritesMessage.style.display = 'block';
+            } else {
+                emptyFavoritesMessage.style.display = 'none';
+                favorites.forEach(fav => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('favorite-list-item');
+                    listItem.innerHTML = `
+                        <div>
+                            ${fav.name}
+                            <span class="subject-details">${vocationalSections[fav.sectionKey].name} - ${fav.stageName}</span>
+                        </div>
+                        <button class="remove-favorite" onclick="event.stopPropagation(); removeFavorite('${fav.id}')">
+                            حذف
+                        </button>
+                    `;
+                    // التعديل: ربط عنصر المفضلة بدالة فتح القارئ
+                    const stageNumKey = fav.stageName.split(' ')[0] === 'الثالث' ? '3' : (fav.stageName.split(' ')[0] === 'الثاني' ? '2' : '1');
+                    const book = vocationalSections[fav.sectionKey].stages[`${fav.sectionKey}_${stageNumKey}`]?.books.find(b => b.id === fav.id);
+                    if (book && book.link && book.link !== '#') {
+                        listItem.onclick = () => openBookInReader(book);
+                    }
+                    // ----------------------------------------------
+                    favoritesList.appendChild(listItem);
+                });
+            }
+            filterBrowserContent(); // لإظهار أو إخفاء العناصر وفقاً للبحث الحالي عند فتح المفضلة
+        }
+        
+        function showSections() {
+            sectionsContainer.style.display = 'block';
+            stagesBySectionContainer.style.display = 'none';
+            booksContainer.style.display = 'none';
+            populateSections();
+            filterBrowserContent();
+        }
+
+        function showStagesBySection(sectionKey) {
+            sectionsContainer.style.display = 'none';
+            booksContainer.style.display = 'none';
+            stagesBySectionContainer.style.display = 'block';
+            
+            window.currentSectionKey = sectionKey; 
+            const section = vocationalSections[sectionKey];
+            
+            sectionStagesTitle.textContent = `اختيار المرحلة لـ: ${section.name}`;
+            stagesListBySection.innerHTML = ''; 
+            
+            for (const stageKey in section.stages) {
+                const stage = section.stages[stageKey];
+                const listItem = document.createElement('li');
+                listItem.classList.add('stage-item');
+                listItem.dataset.search = `${stage.name} ${section.name}`; 
+                
+                const stageNum = stageKey.split('_')[1]; 
+                
+                listItem.onclick = () => showBooks(sectionKey, stageNum, stage.name);
+                
+                listItem.innerHTML = `
+                    <span>${stage.name}</span>
+                    <span>&larr;</span>
+                `;
+                stagesListBySection.appendChild(listItem);
+            }
+            filterBrowserContent();
+        }
+        
+        function showBooks(sectionKey, stageNumber, stageName) {
+            stagesBySectionContainer.style.display = 'none';
+            booksContainer.style.display = 'block';
+            
+            const section = vocationalSections[sectionKey];
+            const stageKey = `${sectionKey}_${stageNumber}`;
+            const stage = section.stages[stageKey];
+            
+            window.currentStageName = stageName; 
+            
+            stageTitle.textContent = `${section.name} - ${stageName}`;
+            subjectsList.innerHTML = ''; 
+            
+            document.querySelector('#books-container .back-button').onclick = () => showStagesBySection(window.currentSectionKey);
+            
+            if (section.link && section.link !== '#') {
+                sectionLink.href = section.link;
+                sectionLink.style.display = 'inline-block';
+            } else {
+                sectionLink.style.display = 'none';
+            }
+
+            const books = stage.books || [];
+
+            if (books.length === 0) {
+                subjectsList.innerHTML = '<p style="color: #dc3545; margin-top: 20px; font-weight: 700;">لا توجد كتب متوفرة لهذا القسم والمرحلة حالياً.</p>';
+                return;
+            }
+
+            books.forEach(book => {
+                const subject = {
+                    id: book.id,
+                    name: book.name,
+                    type: book.type,
+                    stageName: stageName,
+                    sectionKey: sectionKey,
+                    edition: book.edition,
+                    link: book.link // إضافة الرابط في كائن المادة
+                };
+
+                const isFav = isFavorite(subject.id);
+                const subjectJson = JSON.stringify(subject).replace(/"/g, '&quot;');
+
+                const listItem = document.createElement('li');
+                listItem.classList.add('subject-item');
+                listItem.dataset.search = `${book.name} ${book.type} ${book.edition}`; 
+                
+                listItem.innerHTML = `
+                    <div style="display:flex; align-items:center;">
+                        <button class="favorite-toggle ${isFav ? 'is-favorite' : ''}" 
+                                onclick="event.stopPropagation(); toggleFavorite(${subjectJson})">
+                            ${isFav ? '💖' : '🤍'}
+                        </button>
+                        <div>
+                            ${book.name}
+                            <span class="subject-details">${book.type} | ${book.edition}</span>
+                        </div>
+                    </div>
+                    <span>&larr;</span>
+                `;
+                
+                // التعديل الرئيسي: ربط النقر بفتح القارئ الرقمي (إذا كان الرابط موجوداً)
+                if (book.link && book.link !== '#') {
+                    listItem.onclick = () => openBookInReader(book);
+                } else {
+                    listItem.onclick = () => alert(`المادة "${book.name}" غير متوفرة برابط مباشر حالياً.`);
+                }
+                
+                subjectsList.appendChild(listItem);
+            });
+            filterBrowserContent();
+        }
+
+
+        /**
+         * دالة لفتح ملف Google Drive PDF داخل قارئ التطبيق (iframe).
+         * @param {Object} book - كائن يحتوي على بيانات الكتاب ورابطه.
+         */
+        function openBookInReader(book) {
+            if (!book.link || book.link === '#') {
+                alert(`المادة "${book.name}" غير متوفرة برابط مباشر حالياً.`);
+                return;
+            }
+
+            // تحويل رابط المشاركة (view) إلى رابط التضمين (preview)
+            // نستخدم التعبير العادي لضمان استبدال أي جزء بعد /d/FILE_ID/ إما بـ /preview
+            const embedLink = book.link.replace(/(\/d\/[a-zA-Z0-9_-]+)(\/.*)?/, '$1/preview');
+            
+            // تحديث عنوان النافذة
+            readerBookTitle.textContent = `${book.name} - ${window.currentStageName}`;
+            
+            // تعيين رابط التضمين في iframe
+            bookIframe.src = embedLink;
+
+            // **التعديل لحل مشكلة 404/الأذونات المحتملة في الـ iframe**
+            // يتم فتح الرابط في نافذة جديدة إذا استغرق تحميل الـ iframe وقتاً طويلاً كبديل.
+            bookIframe.onload = function() {
+                // قد لا يعمل هذا الحدث دائماً مع روابط خارجية، لكن لضمان عمل الرابط
+            };
+            
+            // احتياط: فتح الرابط مباشرة في نافذة جديدة في حالة عدم تحميل الـ iframe بشكل صحيح
+            // نفتح نافذة جديدة بعد فترة زمنية قصيرة كحل احتياطي للروابط التي قد لا تُفتح في وضع التضمين
+            setTimeout(() => {
+                // إذا لم يتم تحميل الـ iframe أو كانت هناك مشكلة في العرض، نفتح الرابط في نافذة جديدة
+                // هذا يضمن أن المستخدم يستطيع الوصول للمادة حتى لو فشل القارئ الداخلي
+                const originalLink = book.link.replace('/view?usp=drivesdk', '/view?usp=sharing');
+                bookIframe.onerror = function() {
+                    alert(`فشل تحميل القارئ الرقمي. سيتم فتح المادة "${book.name}" في نافذة متصفح جديدة.`);
+                    window.open(originalLink, '_blank', 'noopener,noreferrer');
+                };
+
+                // إعادة تعيين src لإعادة محاولة التحميل أو لتفعيل onerror
+                bookIframe.src = bookIframe.src; 
+                
+            }, 3000); 
+
+
+            // فتح النافذة المنبثقة للقارئ
+            openModal('bookReader');
+        }
+
+
+        // دالة تبديل الوضع الليلي/النهاري (استخدام رمز الإيموجي)
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            if (isDarkMode) {
+                localStorage.setItem('theme', 'dark');
+                modeIcon.textContent = '☀️'; // عرض رمز الشمس في الوضع الليلي (للتغيير للنهاري)
+            } else {
+                localStorage.setItem('theme', 'light');
+                modeIcon.textContent = '🌙'; // عرض رمز القمر في الوضع النهاري (للتغيير لليلي)
+            }
+            
+            document.body.style.background = getComputedStyle(document.documentElement).getPropertyValue('--background-body');
+        }
+        
+        // ===========================================
+        // ==  دالة محاكاة رد الذكاء الاصطناعي (جديدة)  ==
+        // ===========================================
+
+        function getAIResponse() {
+            const prompt = document.getElementById('ai-prompt-input').value.trim();
+            const responseArea = document.getElementById('ai-response-area');
+            const responseText = document.getElementById('ai-response-text');
+
+            if (prompt === "") {
+                alert("الرجاء كتابة سؤالك أولاً!");
+                return;
+            }
+
+            // إظهار منطقة الرد وتحديث النص إلى 'جاري التفكير...'
+            responseArea.style.display = 'block';
+            responseText.innerHTML = 'جاري التفكير في إجابتك... يرجى الانتظار <span style="font-weight: 900;">(محاكاة)</span>';
+
+            // محاكاة تأخير الرد
+            setTimeout(() => {
+                let simulatedResponse = '';
+                
+                // إضافة ردود أكثر تفصيلاً ومخصصة للمواد
+                if (prompt.includes('نظرية') || prompt.includes('اشرح') || prompt.includes('قانون أوم')) {
+                    simulatedResponse = 'قانون أوم (Ohm\'s Law) هو أساس الهندسة الكهربائية، ينص على أن **التيار (I)** المار في موصل يتناسب طرديًا مع **فرق الجهد (V)** وعكسيًا مع **المقاومة (R)**. الصيغة هي: $V = I \\times R$';
+                } else if (prompt.includes('المايكروكونترولر')) {
+                    simulatedResponse = 'المايكروكونترولر (Microcontroller) هو حاسوب متكامل صغير الحجم مدمج على شريحة واحدة. يُستخدم في قسم الإلكترونيك للتحكم بأجهزة معينة، ويحتوي على معالج (CPU)، ذاكرة، ووحدات إدخال/إخراج، مما يجعله مثاليًا لتطبيقات السيطرة والتحكم.';
+                } else if (prompt.includes('التصوير') || prompt.includes('كاميرا') && prompt.includes('إعلام')) {
+                    simulatedResponse = 'في قسم تكنولوجيا الإعلام، يُعد **عمق المجال (Depth of Field)** مفهوماً أساسياً. وهو المنطقة التي تظهر واضحة في الصورة (Sharp). التحكم به يتم عبر فتحة العدسة (Aperture): فتحة واسعة = عمق قليل، وفتحة ضيقة = عمق كبير.';
+                } else if (prompt.includes('تشريح') || prompt.includes('أجهزة طبية')) {
+                    simulatedResponse = 'الجهاز الطبي الأساسي الذي يجب معرفته هو جهاز تخطيط القلب (ECG). وظيفته تسجيل النشاط الكهربائي للقلب. وهو موضوع مهم في مادة الأجهزة الطبية التشخيصية.';
+                } 
+                 else if (prompt.includes('حل') && prompt.includes('رياضيات')) {
+                    simulatedResponse = 'لحل المعادلات، تذكر دائماً عزل المتغير (x). إذا كنت تتعامل مع معادلات تفاضلية، تأكد من تحديد نوع المعادلة وطريقة الحل المناسبة لها (مثل فصل المتغيرات أو عامل التكامل).';
+                }
+                else {
+                    simulatedResponse = 'عفواً، لا أستطيع الإجابة على هذا السؤال الآن، لكن يرجى العلم بأن هذه الميزة هي في مرحلة المحاكاة وستتوفر قريباً بشكل تفاعلي حقيقي. يمكنك التواصل مع الدعم الفني بالأسفل.';
+                }
+                
+                responseText.innerHTML = simulatedResponse;
+                
+                // تنظيف مربع الإدخال
+                document.getElementById('ai-prompt-input').value = '';
+                
+            }, 2000); // تأخير لمدة ثانيتين
+        }
+        
+        // ===========================================
+        // ==    دالة محاكاة البحث والتعديل (مضافة بناءً على طلبك)    ==
+        // ===========================================
+
+        /**
+         * دالة لمحاكاة البحث عن طالب بالاسم وفتح نافذة تعديل وهمية.
+         * ملاحظة: تتطلب قاعدة بيانات حقيقية للتطبيق الفعلي.
+         */
+        function searchAndEditAbsences() {
+            const studentNameInput = document.getElementById('admin-search-student-name');
+            const studentName = studentNameInput.value.trim();
+            const searchResultElement = document.getElementById('admin-search-result');
+            const sharedList = document.getElementById('shared-warnings-list');
+
+            // قائمة محاكاة للطلاب المسجلين
+            const studentsDatabase = [
+                "أحمد سعيد",
+                "علي محمود",
+                "سارة خليل",
+                "محمد جاسم",
+                "ايهم فراس جمال" // اسم المبرمج للتجربة
+            ];
+
+            if (studentName === "") {
+                searchResultElement.textContent = "الرجاء إدخال اسم الطالب للبحث.";
+                searchResultElement.style.display = 'block';
+                return;
+            }
+            
+            // إخفاء رسالة الخطأ قبل البحث
+            searchResultElement.style.display = 'none';
+
+            // التحقق من وجود الاسم (البحث يجب أن يكون متطابقاً للمحاكاة)
+            const foundStudent = studentsDatabase.find(name => name === studentName);
+
+            if (foundStudent) {
+                // إذا تم العثور على الطالب، افتح نافذة تعديل وهمية
+                const studentRecord = getStudentSimulatedRecord(foundStudent);
+                
+                const newWarning = prompt(`تم العثور على سجل الطالب: ${foundStudent}. 
+سجله الحالي (محاكاة): ${studentRecord.warnings} إنذار و ${studentRecord.absences} يوم غياب.
+
+أدخل الآن أي إنذار أو غياب جديد لهذا الطالب:`);
+
+                if (newWarning !== null && newWarning.trim() !== "") {
+                    // محاكاة إضافة السجل الجديد إلى القائمة المشتركة
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('stage-item');
+                    listItem.style.borderRight = '5px solid #00bcd4'; // لون مختلف للإضافة الجديدة
+                    
+                    // التاريخ الحالي ليوم الإضافة
+                    const today = new Date().toLocaleDateString('ar-IQ', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+                    listItem.innerHTML = `
+                        <span>الطالب: ${foundStudent} (سجل جديد: ${newWarning.trim()})</span>
+                        <span style="color: var(--secondary-color);">تاريخ: ${today}</span>
+                    `;
+                    
+                    // إضافة السجل الجديد في بداية القائمة
+                    sharedList.prepend(listItem);
+                    
+                    alert(`تمت إضافة السجل بنجاح للطالب ${foundStudent}. هذا السجل سيظهر الآن للجميع في القائمة المشتركة.`);
+                } else if (newWarning !== null) {
+                     alert(`لم يتم إضافة سجل جديد للطالب ${foundStudent}.`);
+                }
+                
+            } else {
+                // إذا لم يتم العثور على الطالب
+                searchResultElement.textContent = `لم يتم العثور على الطالب: "${studentName}". يرجى التأكد من كتابة الاسم بالكامل.`;
+                searchResultElement.style.display = 'block';
+            }
+        }
+
+        /**
+         * دالة محاكاة للحصول على سجل طالب
+         */
+        function getStudentSimulatedRecord(name) {
+            // بسيطة لغرض المحاكاة
+            if (name.includes('أحمد سعيد')) return { warnings: 1, absences: 0 };
+            if (name.includes('علي محمود')) return { warnings: 0, absences: 5 };
+            if (name.includes('سارة خليل')) return { warnings: 1, absences: 0 };
+            if (name.includes('ايهم فراس جمال')) return { warnings: 2, absences: 0 };
+            return { warnings: 0, absences: 0 };
+        }
+        
+        // تهيئة الوضع الليلي/النهاري وحالة الدخول عند التحميل 
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const autoDarkModeCheckbox = document.getElementById('autoDarkMode');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                modeIcon.textContent = '☀️';
+                if(autoDarkModeCheckbox) autoDarkModeCheckbox.checked = true;
+            } else {
+                modeIcon.textContent = '🌙';
+                if(autoDarkModeCheckbox) autoDarkModeCheckbox.checked = false;
+            }
+            
+            // تحقق من حالة الدخول
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            if (isLoggedIn) {
+                loginScreen.style.display = 'none';
+                mainAppContainer.style.display = 'block';
+                
+                // إظهار الأزرار الجانبية عند التحميل إذا كان مسجلاً دخوله
+                if (modeToggle) { modeToggle.style.display = 'flex'; modeToggle.classList.remove('hidden'); }
+                if (profileButton) { profileButton.style.display = 'flex'; profileButton.classList.remove('hidden'); }
+                if (supportFab) { supportFab.style.display = 'flex'; supportFab.classList.remove('hidden'); }
+                
+                updateProfileModal();
+            } else {
+                loginScreen.style.display = 'block';
+                mainAppContainer.style.display = 'none';
+                
+                // التأكد من إخفاء الأزرار عند شاشة الدخول
+                if (modeToggle) modeToggle.style.display = 'none';
+                if (profileButton) profileButton.style.display = 'none';
+                if (supportFab) supportFab.style.display = 'none';
+            }
+            
+            // تهيئة قائمة الأقسام عند التحميل لأول مرة
+            if (sectionsContainer) {
+                 populateSections();
+            }
+        });
+
+        // إغلاق النافذة عند النقر خارجها
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        }
+        
+        // ربط زر تبديل الوضع الخارجي بدالة التبديل
+        if (modeToggle) modeToggle.addEventListener('click', toggleDarkMode);
+        
+        // ربط حقل البحث في نافذة الإدارة بحدث الإدخال
+        const adminSearchInput = document.getElementById('admin-search-student-name');
+        if (adminSearchInput) {
+            adminSearchInput.addEventListener('keyup', (event) => {
+                if (event.keyCode === 13) {
+                    searchAndEditAbsences();
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
