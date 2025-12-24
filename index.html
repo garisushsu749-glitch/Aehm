@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> أستاذ عادل محسن  اللغة العربي | منصة مهنية متخصصة</title> 
+    <title>تطبيق إعدادية المنصور الصناعية</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         /* ==================================== */
         /* المتغيرات الأساسية للألوان - الوضع الفاتح */
-        /* التعديل: ألوان مستوحاة من التراث (الأحمر الطيني/البني الذهبي) */
         /* ==================================== */
         :root {
-            --primary-color: #A52A2A; /* بني محمر/طيني - لون أساسي للعربي */
-            --secondary-color: #b8860b; /* ذهبي داكن/برونزي - لون ثانوي */
+            --primary-color: #00796b; /* أخضر فيروزي للمسة المدرسية/العصرية */
+            --secondary-color: #00bcd4; /* أزرق سماوي للتأكيد */
             --background-app: #ffffff; 
             --text-color: #212529;
             --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
             --input-bg: #f5f5f5; 
             --support-color: #ffc107; 
             --transition-speed: 0.4s;
-            --background-body: linear-gradient(135deg, #f5f5dc 0%, #ffffff 100%); /* خلفية بيج فاتح/بياض العاج */
+            --background-body: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
         }
 
         /* ==================================== */
         /* المتغيرات الأساسية للألوان - الوضع الداكن */
         /* ==================================== */
         .dark-mode {
-            --background-body: #0a0a0a; 
+            --background-body: #0a0a0a; /* أسود عميق */
             --background-app: #1c1c1c;
             --text-color: #f1f1f1;
-            --primary-color: #ffb74d; /* برتقالي فاتح */
-            --secondary-color: #ffd700; /* ذهبي فاتح */
+            --primary-color: #4db6ac; /* أخضر فاتح للتباين */
+            --secondary-color: #80deea;
             --input-bg: #2d2d2d;
             --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
@@ -72,9 +71,9 @@
         .input-group { margin-bottom: 20px; text-align: right; }
         .input-group label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--text-color); }
         .input-group input, .input-group select { width: 100%; padding: 15px; border: 2px solid var(--input-bg); border-radius: 12px; background-color: var(--input-bg); font-size: 1rem; color: var(--text-color); transition: border-color var(--transition-speed); appearance: none; background-repeat: no-repeat; background-position: left 15px center; padding-left: 50px; }
-        .input-group input:focus, .input-group select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(165, 42, 42, 0.2); }
-        .login-button { width: 100%; padding: 15px; font-size: 1.2rem; font-weight: 800; margin-top: 10px; background: linear-gradient(135deg, var(--primary-color), #8B0000); /* تعديل اللون حسب البني الجديد */ color: white; border-radius: 15px; box-shadow: 0 8px 20px rgba(165, 42, 42, 0.5); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
-        .login-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(165, 42, 42, 0.7); }
+        .input-group input:focus, .input-group select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); }
+        .login-button { width: 100%; padding: 15px; font-size: 1.2rem; font-weight: 800; margin-top: 10px; background: linear-gradient(135deg, var(--primary-color), #004d40); color: white; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 121, 107, 0.5); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .login-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 121, 107, 0.7); }
         #login-error-message { color: #dc3545; font-weight: 700; margin-top: 15px; display: none; }
 
         /* ==================================== */
@@ -94,7 +93,7 @@
             position: relative;
         }
 
-        /* رأس التطبيق والشعار - التعديل: شكل يدل على التراث (القلم/الكتاب) */
+        /* رأس التطبيق والشعار */
         .app-header { 
             text-align: center; 
             margin-bottom: 20px; 
@@ -102,54 +101,47 @@
             border-bottom: 1px solid var(--input-bg);
             position: relative; 
         }
-        /* الشعار: رمز الكتابة والتراث (استخدام إيموجي) */
+        /* الشعار: رمز كتاب مفتوح */
         .app-header .app-logo {
             display: inline-block;
             margin-bottom: 10px;
-            color: var(--primary-color); 
-            font-size: 4rem; 
+            color: var(--primary-color);
+            font-size: 4rem; /* حجم كبير للرمز */
             line-height: 1;
         }
-        /* التعديل لجعل عنوان المنصة أكبر */
+        /* التعديل لجعل عنوان الإعدادية أكبر */
         .app-header h1 {
-            font-size: 1.8rem; 
+            font-size: 2.5rem; /* تم تكبير حجم الخط */
             font-weight: 900; 
             color: var(--primary-color);
-            line-height: 1.3;
-        }
-        .app-header h1 span {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--secondary-color);
         }
 
         /* ... (تنسيقات البحث لم تتغير) ... */
         .search-container { position: relative; margin-bottom: 30px; }
         #search-input, #main-search-input, #browser-search-input { width: 100%; padding: 15px 50px 15px 20px; border: 2px solid var(--input-bg); border-radius: 12px; background-color: var(--input-bg); font-size: 1rem; color: var(--text-color); transition: border-color var(--transition-speed); }
-        #search-input:focus, #main-search-input:focus, #browser-search-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(165, 42, 42, 0.2); }
+        #search-input:focus, #main-search-input:focus, #browser-search-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); }
         .search-container .search-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); color: #999; font-size: 1.2rem; }
         .dark-mode .search-container .search-icon { color: #ccc; }
 
 
         /* أزرار الزاوية العلوية - تم تثبيتها بـ fixed وزيادة Z-index */
         .corner-button {
-            position: fixed; 
+            position: fixed; /* تثبيت الزر في الشاشة */
             top: 20px;
-            background: var(--input-bg); 
+            background: var(--input-bg); /* خلفية خفيفة */
             border: 1px solid var(--primary-color);
             border-radius: 50%;
             width: 50px; 
             height: 50px;
             cursor: pointer;
             padding: 0;
-            transition: all var(--transition-speed) ease; 
-            z-index: 2000; 
+            transition: all var(--transition-speed) ease; /* تحديث الانتقال */
+            z-index: 2000; /* قيمة عالية جداً لضمان الظهور فوق النوافذ المنبثقة */
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            font-size: 1.5rem; 
+            font-size: 1.5rem; /* حجم الأيقونة/الإيموجي */
             line-height: 1;
         }
         .dark-mode .corner-button {
@@ -174,8 +166,8 @@
 
         /* ... (تنسيقات الأزرار الرئيسية والشبكة لم تتغير) ... */
         button { border: none; border-radius: 15px; cursor: pointer; transition: all var(--transition-speed) ease; }
-        .main-button { background: linear-gradient(135deg, var(--primary-color), #8B0000); /* تعديل اللون حسب البني الجديد */ color: white; height: 120px; border-radius: 25px; box-shadow: 0 15px 35px rgba(165, 42, 42, 0.5); margin-bottom: 30px; display: flex; flex-direction: row; padding: 20px; justify-content: center; align-items: center; text-align: right; }
-        .dark-mode .main-button { background: linear-gradient(135deg, var(--primary-color), #732323); box-shadow: 0 15px 35px rgba(255, 183, 77, 0.5); }
+        .main-button { background: linear-gradient(135deg, var(--primary-color), #004d40); color: white; height: 120px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0, 121, 107, 0.5); margin-bottom: 30px; display: flex; flex-direction: row; padding: 20px; justify-content: center; align-items: center; text-align: right; }
+        .dark-mode .main-button { background: linear-gradient(135deg, var(--primary-color), #26a69a); box-shadow: 0 15px 35px rgba(77, 182, 172, 0.5); }
         .main-button .button-icon { font-size: 3.5rem; margin-left: 15px; }
         .main-button .button-text { font-size: 1.6rem; font-weight: 900; }
         .main-button:hover { transform: translateY(-3px) scale(1.02); }
@@ -190,10 +182,10 @@
         /* التذييل - الحقوق (محدث) */
         .credits { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 0.85rem; color: #777; text-align: right; line-height: 1.9; }
         .dark-mode .credits { border-top: 1px solid #333; color: #aaa; }
-        /* التعديل: تغيير اسم المنصة في التذييل */
         .credits strong { color: var(--primary-color); display: block; margin-bottom: 5px; font-size: 1rem; }
         .credits .credit-line { display: block; margin-bottom: 3px; }
 
+        /* ==================================== */
         /* ==================================== */
         /* تنسيقات النوافذ المنبثقة (Modal) */
         /* ==================================== */
@@ -212,8 +204,8 @@
         }
         /* تعديل خاص لنافذة القارئ لجعلها تملأ الشاشة بالكامل */
         #bookReader {
-            background-color: var(--background-app); 
-            z-index: 2000; 
+            background-color: var(--background-app); /* خلفية التطبيق */
+            z-index: 2000; /* فوق كل شيء */
             padding: 0;
         }
 
@@ -240,15 +232,15 @@
              padding: 0;
              border-radius: 0;
              box-shadow: none;
-             overflow: hidden; 
+             overflow: hidden; /* إخفاء شريط التمرير من المحتوى */
         }
         /* تنسيق iframe القارئ */
         #book-iframe {
             width: 100%;
-            height: calc(100% - 70px); 
+            height: calc(100% - 70px); /* عرض الإطار بحجم الشاشة - ارتفاع الهيدر */
             border: none;
             display: block;
-            background-color: #fce4ec;
+            background-color: #e0f7fa;
         }
         #bookReader .header-reader {
              display: flex;
@@ -273,8 +265,8 @@
         .modal-content .close-button:hover { color: var(--secondary-color); }
         
         #bookReader .close-button {
-             position: static; 
-             color: #dc3545; 
+             position: static; /* إزالة التثبيت */
+             color: #dc3545; /* لون أحمر للإغلاق */
              font-size: 1.2rem;
              padding: 10px 15px;
              background-color: var(--input-bg);
@@ -287,7 +279,7 @@
             background-color: #3a3a3a;
         }
         
-        .back-button { background-color: var(--primary-color); color: white; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; display: block; width: 100%; text-align: center; box-shadow: 0 4px 10px rgba(165, 42, 42, 0.4); }
+        .back-button { background-color: #dc3545; color: white; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; display: block; width: 100%; text-align: center; box-shadow: 0 4px 10px rgba(220, 53, 69, 0.4); }
         .stage-list, .subject-list { list-style-type: none; padding: 0; }
         .stage-item, .subject-item { padding: 18px; margin-bottom: 12px; background-color: var(--input-bg); border-radius: 15px; cursor: pointer; transition: all var(--transition-speed); display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: var(--text-color); border-right: 5px solid var(--primary-color); }
         .dark-mode .stage-item, .dark-mode .subject-item { border-right: 5px solid var(--secondary-color); }
@@ -296,7 +288,7 @@
         .subject-details { font-size: 0.85rem; color: #6c757d; margin-top: 5px; font-weight: 400; display: block; }
         .dark-mode .subject-details { color: #ccc; }
         .favorite-toggle { background: none; border: none; cursor: pointer; padding: 5px; font-size: 1.5rem; color: #ccc; transition: color 0.3s; margin-left: 10px; }
-        .favorite-toggle.is-favorite { color: #A52A2A; } /* تغيير لون المفضلة إلى البني */
+        .favorite-toggle.is-favorite { color: #dc3545; }
         
         #support-fab { 
             position: fixed; 
@@ -306,16 +298,16 @@
             width: 60px; 
             height: 60px; 
             border-radius: 50%; 
-            background-color: var(--secondary-color); /* لون ذهبي */
+            background-color: var(--support-color); 
             color: var(--text-color); 
             border: none; 
-            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.6); 
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.6); 
             cursor: pointer; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             font-size: 1.8rem; 
-            transition: all var(--transition-speed) ease; 
+            transition: all var(--transition-speed) ease; /* تحديث الانتقال */
         }
         #support-fab.hidden {
             opacity: 0;
@@ -324,11 +316,11 @@
             transform: translateY(20px);
         }
 
-        #support-fab:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(184, 134, 11, 0.8); }
+        #support-fab:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(255, 193, 7, 0.8); }
         #support-fab .fab-icon { color: #3e2723; }
         
         /* ==================================== */
-        /* تنسيقات صندوق الدردشة بالذكاء الاصطناعي */
+        /* تنسيقات صندوق الدردشة بالذكاء الاصطناعي (جديد) */
         /* ==================================== */
         #ai-chat-box {
             background-color: var(--input-bg);
@@ -336,7 +328,7 @@
             padding: 15px;
             margin-bottom: 25px;
             box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--secondary-color); 
+            border: 1px solid var(--secondary-color); /* إطار للتمييز */
         }
         .dark-mode #ai-chat-box {
             border: 1px solid var(--primary-color);
@@ -368,7 +360,7 @@
         #ai-chat-box .ai-prompt-input:focus {
             outline: none; 
             border-color: var(--primary-color); 
-            box-shadow: 0 0 0 3px rgba(165, 42, 42, 0.2);
+            box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2);
         }
         
         .ai-chat-button {
@@ -376,12 +368,12 @@
             padding: 10px;
             font-size: 1rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--secondary-color), #daa520); /* تغيير لون الزر */
+            background: linear-gradient(135deg, var(--secondary-color), #00a0b2);
             color: white;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.2s;
-            box-shadow: 0 4px 10px rgba(184, 134, 11, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
         }
         
         .ai-chat-button:hover {
@@ -405,7 +397,7 @@
             border-left: 5px solid var(--secondary-color);
         }
         
-        /* ... (بقية التنسيقات لم تتغير) ... */
+        /* ... (تنسيقات support-contact-info, content-box, setting-option لم تتغير) ... */
         .support-contact-info li { padding: 15px; margin-bottom: 10px; background-color: var(--input-bg); border-radius: 10px; cursor: pointer; transition: var(--transition-speed); display: flex; align-items: center; font-weight: 700; }
         .support-contact-info li:hover { background-color: #eee; transform: translateX(-5px); }
         .dark-mode .support-contact-info li:hover { background-color: #3a3a3a; }
@@ -426,27 +418,434 @@
         .profile-detail span:last-child { color: var(--secondary-color); font-weight: 800; }
         .logout-button { width: 100%; margin-top: 30px; padding: 15px; font-size: 1.1rem; font-weight: 800; background-color: #dc3545; color: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(220, 53, 69, 0.5); }
         .logout-button:hover { background-color: #c82333; transform: translateY(-2px); }
-        .favorite-list-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; margin-bottom: 10px; background-color: var(--input-bg); border-radius: 10px; font-weight: 700; border-right: 5px solid #A52A2A; /* تغيير لون البوردر */ transition: all 0.3s; }
+        .favorite-list-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; margin-bottom: 10px; background-color: var(--input-bg); border-radius: 10px; font-weight: 700; border-right: 5px solid #dc3545; transition: all 0.3s; }
         .favorite-list-item:hover { background-color: #f0f0f0; transform: translateX(-5px); }
         .dark-mode .favorite-list-item:hover { background-color: #3a3a3a; }
-        .remove-favorite { background: none; border: none; color: #A52A2A; /* تغيير لون الحذف */ font-weight: 800; cursor: pointer; font-size: 1rem; margin-left: 10px; }
+        .remove-favorite { background: none; border: none; color: #dc3545; font-weight: 800; cursor: pointer; font-size: 1rem; margin-left: 10px; }
         .remove-favorite:hover { text-decoration: underline; }
 
-        /* تم حذف تنسيقات نافذة الانذارات والغيابات بالكامل */
+        /* تنسيقات نافذة الانذارات والغيابات */
+        #shared-warnings-list { list-style-type: none; padding: 0; margin-top: 20px; }
+        #shared-warnings-list .stage-item { border-right: 5px solid #dc3545; /* لون أحمر للإنذارات */ }
+        #shared-warnings-list .stage-item:hover { transform: translateX(-5px); }
+        #admin-actions { border-top: 1px solid var(--input-bg); padding-top: 20px; margin-top: 20px; }
+        #admin-actions h4 { color: #dc3545; margin-bottom: 15px; }
+
+
+        /* تنسيقات ميزة التدريب على الرسم الهندسي */
+        .drawing-board-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-color: #f0e6d2; /* لون خشبي فاتح للبورد */
+            border: 10px solid #8d6e63;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: crosshair;
+            touch-action: none;
+        }
+        #drawingCanvas {
+            width: 100%;
+            height: 100%;
+        }
+        .t-square {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 10;
+        }
+        .t-square::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -20px;
+            width: 40px;
+            height: 44px;
+            background-color: #333;
+        }
+        .drawing-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .draw-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ==================================== */
+        /* تنسيقات نافذة تدريب الرسم المنبثقة */
+        /* ==================================== */
+
+        .drawing-training-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .drawing-training-modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .drawing-training-modal-content {
+            background-color: var(--background-app);
+            padding: 40px 30px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .drawing-training-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: all var(--transition-speed) ease;
+            background-color: var(--input-bg);
+        }
+
+        .drawing-training-modal-close:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .drawing-training-modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .drawing-training-modal-header .icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .drawing-training-modal-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .drawing-training-modal-header p {
+            color: var(--text-color);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .drawing-training-modal-body {
+            margin-bottom: 30px;
+        }
+
+        .drawing-training-section {
+            margin-bottom: 25px;
+        }
+
+        .drawing-training-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .drawing-training-section h3 .section-icon {
+            font-size: 1.5rem;
+        }
+
+        .drawing-training-section p {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .drawing-training-section .instructor-name {
+            background-color: var(--input-bg);
+            padding: 15px;
+            border-right: 4px solid var(--primary-color);
+            border-radius: 8px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .tools-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .tools-table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .tools-table th {
+            padding: 12px;
+            text-align: right;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .tools-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--input-bg);
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .tools-table tbody tr:hover {
+            background-color: var(--input-bg);
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .tools-table .tool-number {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .tools-table .tool-name {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, rgba(0, 121, 107, 0.1), rgba(0, 188, 212, 0.1));
+            border-right: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .important-note .note-icon {
+            font-size: 1.5rem;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .important-note p {
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .drawing-training-modal-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--input-bg);
+        }
+
+        .drawing-training-modal-footer button {
+            background: linear-gradient(135deg, var(--primary-color), #004d40);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 121, 107, 0.4);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .drawing-training-modal-footer button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 121, 107, 0.6);
+        }
+
+        .drawing-training-modal-footer button:active {
+            transform: translateY(0);
+        }
+
+        .dark-mode .tools-table tbody tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        .dark-mode .drawing-training-modal-close {
+            background-color: #2d2d2d;
+        }
+
+        @media (max-width: 600px) {
+            .drawing-training-modal-content {
+                width: 95%;
+                padding: 30px 20px;
+            }
+
+            .drawing-training-modal-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .drawing-training-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .tools-table th,
+            .tools-table td {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+
+            .drawing-training-modal-close {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        .developer-link { 
+            color: #007bff; /* لون أزرق */
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .developer-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    
+    
+        /* ==================================== */
+        /* شاشة الترحيب (Splash Screen) المحدثة */
+        /* ==================================== */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        .dark-mode #splash-screen {
+            background: #0a0a0a;
+        }
+        .splash-logo {
+            width: 100px;
+            height: 100px;
+            background: #00796b;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3.5rem;
+            box-shadow: 0 15px 35px rgba(0, 121, 107, 0.3);
+            margin-bottom: 25px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .splash-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #00796b;
+            margin-bottom: 30px;
+        }
+        
+        /* تصميم شريط التقدم كما في الصورة */
+        .progress-container {
+            width: 70%;
+            max-width: 300px;
+            height: 6px;
+            background-color: rgba(128, 128, 128, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #007bff; /* لون أزرق كما في الصورة */
+            border-radius: 10px;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
     </style>
 </head>
 <body>
+    <!-- شاشة الترحيب -->
+    <div id="splash-screen">
+        <div class="splash-logo">📖</div>
+        <div class="splash-title">إعدادية المنصور الصناعية</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="main-progress-bar"></div>
+        </div>
+    </div>
+
+
 
     <div class="login-container" id="login-screen">
         <header class="app-header">
             <span class="app-logo">
-                ✍️
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V5H6.5A2.5 2.5 0 0 0 4 7.5v12z"></path></svg>
             </span>
-            <h1>
-                أستاذ عادل محسن اللغة العربي 
-                <span>| منصة مهنية متخصصة</span>
-            </h1>
+            <h1>إعدادية المنصور الصناعية</h1>
         </header>
 
         <h2>تسجيل الدخول</h2>
@@ -457,9 +856,13 @@
         </div>
         
         <div class="input-group">
-            <label for="studentSection">اختر المادة:</label>
+            <label for="studentSection">اختر القسم:</label>
             <select id="studentSection" required>
-                <option value="arabic" selected>اللغة العربية - الأستاذ عادل محسن</option>
+                <option value="" disabled selected>-- اختر قسمك --</option>
+                <option value="elec">قسم الكهرباء</option>
+                <option value="elecs">قسم الإلكترونيك والسيطرة</option>
+                <option value="media">قسم تكنولوجيا الإعلام</option>
+                <option value="med">قسم الأجهزة الطبية</option>
             </select>
         </div>
 
@@ -478,17 +881,15 @@
             <input type="password" id="studentPassword" placeholder="كلمة المرور (أي شيء)" required>
         </div>
         
-        <p id="login-error-message">الرجاء ملء جميع الحقول للمتابعة.</p>
+        <p id="login-error-message" style="color: #dc3545; font-weight: 700; margin-top: 15px; display: none;">الرجاء ملء جميع الحقول للمتابعة.</p>
         
         <button class="login-button" onclick="attemptLogin()">
             تسجيل الدخول والبدء
         </button>
         
-        <footer class="credits" style="margin-top: 30px; border-top: none;">
-            <p style="text-align: center; font-size: 0.9rem;">
-                للدخول، أدخل اسمك، واختَر المرحلة، وأدخل أي كلمة مرور.
-            </p>
-        </footer>
+        <div class="credits" style="margin-top: 30px; border-top: none;">
+            <span style="display: block; font-size: 0.9rem; color: #777;">للدخول، أدخل اسمك، واختَر القسم والمرحلة، وأدخل أي كلمة مرور.</span>
+        </div>
     </div>
     
     
@@ -504,12 +905,9 @@
         
         <header class="app-header">
              <span class="app-logo">
-                ✍️
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V5H6.5A2.5 2.5 0 0 0 4 7.5v12z"></path></svg>
             </span>
-            <h1>
-                أستاذ عادل محسن للغة العربي 
-                <span>| منصة مهنية متخصصة</span>
-            </h1>
+            <h1>إعدادية المنصور الصناعية</h1>
         </header>
 
         <main class="main-content">
@@ -518,25 +916,36 @@
                 <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </span>
-                <input type="text" id="main-search-input" placeholder="البحث في دروس ومراحل مادة اللغة العربية..." oninput="syncSearchInput()">
+                <input type="text" id="main-search-input" placeholder="البحث في المواد، الأقسام، والمراحل..." oninput="syncSearchInput()">
             </div>
             
             <button class="main-button" onclick="openModal('stagesBrowser')">
                 <div class="button-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V5H6.5A2.5 2.5 0 0 0 4 7.5v12z"></path></svg>
                 </div>
-                <span class="button-text">تصفح المراحل و الدروس</span>
+                <span class="button-text">تصفح الأقسام والمراحل</span>
             </button>
 
             <div class="grid-buttons">
-                <button class="grid-button" onclick="openModal('myFavorites')">
+
+                <button class="grid-button" onclick="openDrawingTrainingModal(); openModal('drawingTraining'); initDrawingBoard();">
+                    <span class="button-icon">📐</span>
+                    <span class="button-text">تدريب الرسم الهندسي</span>
+                </button>
+                    <button class="grid-button" onclick="openModal('myFavorites')">
                     <span class="button-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="var(--primary-color)" stroke="var(--primary-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                     </span>
                     <span class="button-text">مفضلتي</span>
                 </button>
                 
-                 <button class="grid-button" onclick="openModal('settings')">
+                 <button class="grid-button" onclick="openModal('warningsPunishments')">
+                    <span class="button-icon" style="color: #dc3545;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </span>
+                    <span class="button-text">الإنذارات والغيابات</span>
+                </button>
+                <button class="grid-button" onclick="openModal('settings')">
                      <span class="button-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1.51-1V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                     </span>
@@ -562,31 +971,43 @@
                 </button>
                 <button class="grid-button" onclick="openModal('supportShare')">
                     <span class="button-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12V2a2 2 2 0 0 1 2-2h12a2 2 2 0 0 1 2 2v10M12 24v-6M9 21h6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10M12 24v-6M9 21h6"/></svg>
                     </span>
                     <span class="button-text">دعم ونشر التطبيق</span>
                 </button>
-                
-                 <button class="grid-button" onclick="openModal('technicalSupport')">
+                <button class="grid-button" onclick="openModal('calculator')">
                     <span class="button-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c0 2.76-2.24 5-5 5S2 14.76 2 12s2.24-5 5-5c.42 0 .82.04 1.21.12"/><path d="M21 12c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5c.39 0 .79.04 1.18.12"/><path d="M14 9l7-7M3 21l7-7"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><rect x="6" y="4" width="12" height="4"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
                     </span>
-                    <span class="button-text">المساعد والدعم الفني</span>
+                    <span class="button-text">الآلة الحاسبة</span>
                 </button>
-                
-                 </div>
+                <button class="grid-button" onclick="openModal('notepad')">
+                    <span class="button-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    </span>
+                    <span class="button-text">سجل الملاحظات</span>
+                </button>
+            </div>
             
-        </main>
+        
+        <div class="credits">
+            <strong>حقوق النشر © 2025-2026</strong>
+            <span class="credit-line">بإشراف: المهندسه مياس حارث</span>
+            <span class="credit-line">
+                تم التطوير بواسطة: 
+                <a href="https://t.me/pg_virus3" target="_blank" class="developer-link">أيهم فراس جمال</a>
+            </span>
+            <span class="credit-line">مساعدة فريق: نخبة التقنيين - Tech Elite Team</span>
+        </div>
+    
+    </main>
         
         <footer class="credits">
-            <strong>منصة أستاذ عادل محسن للغة العربي | منصة مهنية متخصصة</strong>
-            <span class="credit-line" style="font-weight: 700; color: #777;">حقوق الطبع والنشر &copy; 2025-2026</span>
-            <span class="credit-line">تم التطوير بواسطة: 
-                <a href="https://t.me/pg_virus3" target="_blank" style="color: var(--primary-color); font-weight: 800; text-decoration: none;">
-                    ايهم فراس جمال
-                </a>
-            </span>
-            <span class="credit-line">/المساعد : حسين عادل محي:</span>
+            <strong> :</strong>
+            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">  </span>
+            <span class="credit-line">المبرمج : حسين عادل</span>
+            <span class="credit-line">المساعد : احمد عباس </span>
+            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">قسم الكترونيك والسيطرة</span>
         </footer>
     </div>
     
@@ -626,7 +1047,49 @@
             </p>
         </div>
     </div>
-    
+
+    <div id="warningsPunishments" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('warningsPunishments')">&times;</span>
+            <h2><span style="font-size: 1.5rem; color: #dc3545; margin-left: 10px;">⚠️</span> الإنذارات والغيابات (سجل مشترك)</h2>
+            
+            <div class="content-box">
+                <h4>ملاحظة هامة:</h4>
+                <p>هذا السجل يظهر الإنذارات الرسمية وحالات الغياب المسجلة من قبل الإدارة. يرجى الاطلاع عليه دورياً.</p>
+            </div>
+            
+            <ul id="shared-warnings-list" class="stage-list">
+                <li class="stage-item">
+                    <span>الطالب: أحمد سعيد (غ. م.)</span>
+                    <span style="color: #dc3545;">سجل: غياب غير مبرر</span>
+                </li>
+                 <li class="stage-item">
+                    <span>الطالب: علي محمود (إنذار)</span>
+                    <span style="color: #dc3545;">سجل: مخالفة للزي المدرسي</span>
+                </li>
+                <li class="stage-item">
+                    <span>الطالب: محمد جاسم (غ. م.)</span>
+                    <span style="color: #dc3545;">سجل: غياب غير مبرر 3 أيام</span>
+                </li>
+                 <li class="stage-item">
+                    <span>الطالب: ايهم فراس جمال (إنذار)</span>
+                    <span style="color: #dc3545;">سجل: إنذار رقم 1 (تأخير)</span>
+                </li>
+            </ul>
+            
+            <div id="admin-actions">
+                 <h4 style="color: var(--secondary-color); margin-bottom: 10px;">لإدارة السجلات (للكادر فقط):</h4>
+                 <div class="input-group">
+                    <label for="admin-search-student-name">اسم الطالب المراد إضافة سجل له:</label>
+                    <input type="text" id="admin-search-student-name" placeholder="أدخل اسم الطالب بالكامل">
+                </div>
+                <p id="admin-search-result" style="color: #dc3545; font-weight: 700; margin-top: 10px; display: none;">الرجاء إدخال اسم الطالب للبحث.</p>
+                <button class="login-button" style="background: linear-gradient(135deg, #00bcd4, #0077b5); margin-top: 15px;" onclick="searchAndEditAbsences()">
+                    بحث وإضافة سجل جديد
+                </button>
+            </div>
+        </div>
+    </div>
     <div id="technicalSupport" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal('technicalSupport')">&times;</span>
@@ -634,8 +1097,8 @@
             
             <div id="ai-chat-box">
                 <h4><span style="margin-left: 10px;">🤖</span> مساعدك الذكي لحل الأسئلة!</h4>
-                <p style="margin-bottom: 15px; font-size: 0.9rem; color: #6c757d;">اكتب سؤالك في مادة اللغة العربية، وسأساعدك في الحل والشرح.</p>
-                <input type="text" id="ai-prompt-input" class="ai-prompt-input" placeholder="مثال: اشرح قاعدة التقديم والتأخير" onkeyup="if(event.keyCode == 13) getAIResponse()">
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: #6c757d;">اكتب سؤالك في أي مادة، وسأساعدك في الحل والشرح.</p>
+                <input type="text" id="ai-prompt-input" class="ai-prompt-input" placeholder="مثال: اشرح نظرية الكهرومغناطيسية" onkeyup="if(event.keyCode == 13) getAIResponse()">
                 <button class="ai-chat-button" onclick="getAIResponse()">
                     إرسال السؤال
                 </button>
@@ -647,7 +1110,7 @@
             
             <p style="margin-bottom: 15px; font-weight: 700; border-top: 1px solid var(--input-bg); padding-top: 15px;">للدعم الفني والتواصل البشري:</p>
             <ul class="support-contact-info" style="list-style-type: none; padding: 0;">
-                <li onclick="window.open('https://t.me/pg_virus3', '_blank', 'noopener,noreferrer')">
+                <li onclick="alert('فتح رابط التليجرام للمبرمج')">
                     <span class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                     </span>
@@ -660,13 +1123,13 @@
     <div id="stagesBrowser" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal('stagesBrowser')">&times;</span>
-            <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">📚</span> تصفح مراحل ودروس اللغة العربية</h2>
+            <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">📚</span> تصفح الأقسام والمواد</h2>
             
              <div class="search-container" style="margin-bottom: 20px;">
                 <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </span>
-                <input type="text" id="browser-search-input" placeholder="ابحث في المراحل والدروس...">
+                <input type="text" id="browser-search-input" placeholder="ابحث في أقسام ومواد الإعدادية...">
             </div>
 
             <div id="sections-container">
@@ -684,8 +1147,8 @@
             <div id="books-container" style="display: none;">
                 <h3 id="stage-title" style="margin-bottom: 20px; color: var(--secondary-color);"></h3>
                 <button class="back-button">رجوع للمراحل</button>
-                <a id="section-link" target="_blank" style="margin-bottom: 20px; display: none; color: white; background-color: var(--secondary-color); padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; font-weight: 700;">
-                    قناة الأستاذ عادل محسن على تيليجرام
+                <a id="section-link" target="_blank" style="margin-bottom: 20px; display: none; color: white; background-color: #3f51b5; padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; font-weight: 700;">
+                    قناة القسم الرسمية على تيليجرام
                 </a>
                 <ul id="subjects-list" class="subject-list">
                     </ul>
@@ -696,7 +1159,7 @@
     <div id="myFavorites" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeModal('myFavorites')">&times;</span>
-            <h2><span style="font-size: 1.5rem; color: #A52A2A; margin-left: 10px;">💖</span> مفضلتي</h2>
+            <h2><span style="font-size: 1.5rem; color: #dc3545; margin-left: 10px;">💖</span> مفضلتي</h2>
             
             <ul id="favorites-list">
                 </ul>
@@ -747,13 +1210,13 @@
             <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">🌟</span> إضافات هامة</h2>
             <div class="content-box">
                 <h4>إعلانات هامة</h4>
-                <p>ملفات امتحانات سابقة، نماذج أسئلة، وملازم الأستاذ عادل محسن متوفرة هنا.</p>
+                <p>سنوات سابقة، نماذج أسئلة، وملازم إثرائية متوفرة في قسم الإعلانات.</p>
             </div>
              <ul class="stage-list">
-                <li class="stage-item" onclick="alert('فتح السنوات السابقة لمادة العربي')">
+                <li class="stage-item" onclick="alert('فتح سنوات سابقة')">
                     <span>السنوات السابقة للامتحانات </span><span>&larr;</span>
                 </li>
-                <li class="stage-item" onclick="alert('فتح نماذج أسئلة الأستاذ عادل محسن')">
+                <li class="stage-item" onclick="alert('فتح نماذج أسئلة')">
                     <span>نماذج الأسئلة الوزارية </span><span>&larr;</span>
                 </li>
             </ul>
@@ -766,10 +1229,10 @@
             <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">📖</span> قارئ الدرس الرقمي</h2>
             <div class="content-box">
                 <h4>ملاحظة:</h4>
-                <p>هذه الميزة ستقوم بفتح ملفات PDF/محتوى الدرس مباشرة في التطبيق. يرجى تصفح المراحل والضغط على اسم الدرس للبدء في القراءة.</p>
+                <p>هذه الميزة ستقوم بفتح ملفات PDF/محتوى الدرس مباشرة في التطبيق. يرجى تصفح المواد والضغط على اسم المادة للبدء في القراءة.</p>
             </div>
             <button class="main-button" style="height: 60px;" onclick="closeModal('digitalReader'); openModal('stagesBrowser')">
-                <span class="button-text">ابدأ تصفح المراحل والدروس</span>
+                <span class="button-text">ابدأ تصفح المواد</span>
             </button>
         </div>
     </div>
@@ -782,13 +1245,14 @@
                 <h4>كيف تستخدم التطبيق؟</h4>
                 <p>
                     1. قم بملء بيانات تسجيل الدخول. <br>
-                    2. استخدم زر "**تصفح المراحل والدروس**" للعثور على درسك في مادة اللغة العربية. <br>
-                    3. **اضغط على اسم الدرس** في قائمة الدروس لفتحه مباشرة داخل التطبيق (القارئ الرقمي). <br>
-                    4. اضغط على رمز **"💖"** لإضافة أي درس إلى **مفضلتي**. <br>
+                    2. استخدم زر "**تصفح الأقسام والمراحل**" للعثور على مادتك. <br>
+                    3. **اضغط على اسم المادة** في قائمة المواد لفتحها مباشرة داخل التطبيق (القارئ الرقمي). <br>
+                    4. اضغط على رمز **"💖"** لإضافة أي مادة إلى **مفضلتي**. <br>
                     5. استخدم أيقونة **"👤"** للوصول إلى بيانات حسابك. <br>
                     6. استخدم أيقونة **"🌙"** لتبديل وضع العرض.
-                    7. استخدم زر **"🤖"** للوصول إلى **المساعد الذكي** لحل أسئلة العربي.
-                    </p>
+                    7. استخدم زر **"🤖"** للوصول إلى **المساعد الذكي** لحل الأسئلة.
+                    8. استخدم زر **"⚠️"** للدخول إلى سجل **الإنذارات والغيابات** المشترك.
+                </p>
             </div>
         </div>
     </div>
@@ -823,6 +1287,80 @@
             <iframe id="book-iframe" src="" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
+
+    <!-- نافذة الآلة الحاسبة -->
+    <div id="calculator" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('calculator')">&times;</span>
+            <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">🧮</span> الآلة الحاسبة</h2>
+            
+            <div class="calculator-container" style="margin-top: 20px;">
+                <input type="text" id="calc-display" class="calc-display" readonly style="width: 100%; padding: 15px; font-size: 1.8rem; font-weight: 700; border: 2px solid var(--primary-color); border-radius: 12px; background-color: var(--input-bg); color: var(--text-color); text-align: right; margin-bottom: 15px; letter-spacing: 2px;">
+                
+                <div class="calc-buttons" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                    <!-- صف الأزرار الأول: مسح وحذف والعمليات -->
+                    <button class="calc-btn" onclick="clearCalc()" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: #dc3545; color: white; border: none; cursor: pointer; font-weight: 700; grid-column: span 2; transition: all 0.2s;">مسح</button>
+                    <button class="calc-btn" onclick="deleteLastChar()" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: #ff9800; color: white; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s;">⌫</button>
+                    <button class="calc-btn" onclick="appendToCalc('/')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: #ff9800; color: white; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s;">÷</button>
+                    
+                    <!-- الأرقام والعمليات -->
+                    <button class="calc-btn" onclick="appendToCalc('7')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">7</button>
+                    <button class="calc-btn" onclick="appendToCalc('8')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">8</button>
+                    <button class="calc-btn" onclick="appendToCalc('9')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">9</button>
+                    <button class="calc-btn" onclick="appendToCalc('*')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: #ff9800; color: white; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s;">×</button>
+                    
+                    <button class="calc-btn" onclick="appendToCalc('4')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">4</button>
+                    <button class="calc-btn" onclick="appendToCalc('5')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">5</button>
+                    <button class="calc-btn" onclick="appendToCalc('6')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">6</button>
+                    <button class="calc-btn" onclick="appendToCalc('-')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: #ff9800; color: white; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s;">−</button>
+                    
+                    <button class="calc-btn" onclick="appendToCalc('1')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">1</button>
+                    <button class="calc-btn" onclick="appendToCalc('2')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">2</button>
+                    <button class="calc-btn" onclick="appendToCalc('3')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">3</button>
+                    <button class="calc-btn" onclick="appendToCalc('+')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: #ff9800; color: white; border: none; cursor: pointer; font-weight: 700; transition: all 0.2s;">+</button>
+                    
+                    <button class="calc-btn" onclick="appendToCalc('0')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s; grid-column: span 2;">0</button>
+                    <button class="calc-btn" onclick="appendToCalc('.')" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--input-bg); color: var(--text-color); border: 1px solid var(--primary-color); cursor: pointer; font-weight: 700; transition: all 0.2s;">.</button>
+                    
+                    <button class="calc-btn" onclick="calculateResult()" style="padding: 15px; font-size: 1.2rem; border-radius: 10px; background-color: var(--primary-color); color: white; border: none; cursor: pointer; font-weight: 700; grid-column: span 4; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0, 121, 107, 0.4);">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة سجل الملاحظات -->
+    <div id="notepad" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('notepad')">&times;</span>
+            <h2><span style="font-size: 1.5rem; color: var(--primary-color); margin-left: 10px;">📝</span> سجل الملاحظات</h2>
+            
+            <div class="notepad-container" style="margin-top: 20px;">
+                <div class="input-group">
+                    <label for="note-title">عنوان الملاحظة:</label>
+                    <input type="text" id="note-title" placeholder="أدخل عنوان الملاحظة..." style="width: 100%; padding: 12px; border: 2px solid var(--input-bg); border-radius: 12px; background-color: var(--input-bg); color: var(--text-color); font-size: 1rem;">
+                </div>
+                
+                <div class="input-group" style="margin-top: 15px;">
+                    <label for="note-content">محتوى الملاحظة:</label>
+                    <textarea id="note-content" placeholder="اكتب ملاحظتك هنا..." style="width: 100%; padding: 12px; border: 2px solid var(--input-bg); border-radius: 12px; background-color: var(--input-bg); color: var(--text-color); font-size: 1rem; min-height: 150px; resize: vertical;"></textarea>
+                </div>
+                
+                <button class="main-button" style="height: 50px; margin-top: 15px;" onclick="addNote()">
+                    <span class="button-text">حفظ الملاحظة</span>
+                </button>
+            </div>
+            
+            <div style="margin-top: 30px; border-top: 1px solid var(--input-bg); padding-top: 20px;">
+                <h3 style="color: var(--secondary-color); margin-bottom: 15px;">ملاحظاتي:</h3>
+                <ul id="notes-list" style="list-style: none; padding: 0;">
+                </ul>
+                <p id="empty-notes" style="text-align: center; color: #777; font-weight: 700; margin-top: 20px;">
+                    لا توجد ملاحظات حتى الآن. أضف ملاحظتك الأولى!
+                </p>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         
@@ -867,16 +1405,19 @@
         window.currentStageName = '';
         
         // ===========================================
-        // ==  بيانات الكتب والأقسام (تم تحديثها بالكامل لمادة العربي فقط) ==
+        // ==  بيانات الكتب والأقسام (تم التحديث هنا) ==
         // ===========================================
         
-        // رابط الأستاذ عادل محسن على تيليجرام
-        const officialLink = "https://t.me/MansourIndustrial"; 
+        const officialLink = "https://t.me/MansourIndustrial";
 
         function createSubject(name, type, stageName, edition, link = "#") {
             const id = `sub-${name.replace(/\s/g, '_')}-${stageName}`;
             return { id, name, type, stageName, edition, link };
         }
+
+        // الرابط الخاص بكتاب العربي للمرحلة الأولى (تم الإبقاء عليه كما هو)
+        const arabicBookLink = "https://drive.google.com/file/d/1K4Sh-k50MdJonN8eBERWsJQ2dY3qvbqM/preview";
+
 
         const stageNames = {
             '1': "الأول المهني",
@@ -884,29 +1425,161 @@
             '3': "الثالث المهني",
         };
 
-        // الروابط المحدثة لمادة اللغة العربية فقط
-        const arabicSubjects = {
+        // تحديث مواد العامة المشتركة بالروابط الجديدة التي قدمها المستخدم
+        const generalSubjects = {
             '1': [
-                createSubject("كتاب اللغة العربية", "كتاب أساسي", "الأول المهني", "إصدار 2024", "https://drive.google.com/file/d/1akmTSA25Jhc_e7dEvuilVp-j5yHtskAa/view?usp=drivesdk"),
-                createSubject("ملزمة قواعد الأول", "ملزمة خارجية", "الأول المهني", "إصدار 2024", "#"),
+                // المواد العامة للمرحلة الأولى - تم الإبقاء على القديم، لا يوجد جديد
+                createSubject("الطبيعيات", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/13gNIdTfUpQS9sPtA4mKZcuIMieOo242j/preview"),
+                createSubject("اللغة العربية", "كتاب أساسي", "الأول", "إصدار 2024", arabicBookLink), 
+                createSubject("الرياضيات", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1UV0JumL_Ect_cdkOdjcKzyLr-mB-X6vU/preview"),
+                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1K5erclI6vetKB8Img-kZsmEaa0yfPFsD/preview"),
+                createSubject("التربية الإسلامية", "كتاب أساسي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1e4GRZhD9JMBEA_g8OS-Qqy6iXDT-F54D/preview")
             ],
+            // تحديث المرحلة الثانية بالروابط الجديدة المطلوبة
             '2': [
-                createSubject("كتاب اللغة العربية", "كتاب أساسي", "الثاني المهني", "إصدار 2024", "https://drive.google.com/file/d/1mQj5m_u-J2L69I2Y8eqNCNqROes_s48e/view?usp=drivesdk"),
-                createSubject("ملزمة قواعد الثاني", "ملزمة خارجية", "الثاني المهني", "إصدار 2024", "#"),
+                // تحديث الطبيعيات
+                createSubject("الطبيعيات", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1pEdZM4e3sg2StYLM9Ijt07m937f7wMOc/preview"),
+                // تحديث اللغة العربية
+                createSubject("اللغة العربية", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1mQj5m_u-J2L69I2Y8eqNCNqROes_s48e/preview"),
+                createSubject("الرياضيات", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1N9-2fp5azs1baCgy2wZKEojE60teeGac/preview"),
+                // تحديث اللغة الإنكليزية
+                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/17-fpF6uAwMBRaCcAY21GyK4lp53Dyfoy/preview"),
+                createSubject("التربية الإسلامية", "كتاب أساسي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1rF1gy-iXkgnUMzrN7CntKtQav-HvSM7f/preview")
             ],
+            // تحديث مواد المرحلة الثالثة (الثالث المهني) بالروابط المطلوبة
             '3': [
-                createSubject("كتاب اللغة العربية", "كتاب أساسي", "الثالث المهني", "إصدار 2024", "https://drive.google.com/file/d/1D-s2ddrAOVVAnWtcst473tyqXbyGJV78/view?usp=drivesdk"),
-                createSubject("ملزمة قواعد الثالث", "ملزمة خارجية", "الثالث المهني", "إصدار 2024", "#"),
+                createSubject("الطبيعيات", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1l5MkyOqx98j4NJ8_nSorooVx-MTkgbA1/preview"),
+                // تحديث اللغة العربية
+                createSubject("اللغة العربية", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1D-s2ddrAOVVAnWtcst473tyqXbyGJV78/preview"),
+                createSubject("الرياضيات", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1VmFNZOIpJytzxGhssMwRSXJvJseLNhc_/preview"),
+                // تحديث اللغة الإنكليزية
+                createSubject("اللغة الإنكليزية", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1XRYfzOFh1R0eLFfbK0Mk7OreVd6uqEm3/preview"),
+                // تحديث التربية الإسلامية
+                createSubject("التربية الإسلامية", "كتاب أساسي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1NtgFUMU4Hb4f86wiNDPlVFWHWnpFIu-t/preview")
             ]
         };
 
-        // التعديل: الإبقاء على قسم واحد فقط (اللغة العربية)
         const vocationalSections = {
-            arabic: { name: "اللغة العربية - أ. عادل محسن", link: officialLink, stages: {
-                'arabic_1': { name: stageNames['1'], books: arabicSubjects['1'] },
-                'arabic_2': { name: stageNames['2'], books: arabicSubjects['2'] },
-                'arabic_3': { name: stageNames['3'], books: arabicSubjects['3'] }
+            elec: { name: "قسم الكهرباء", link: officialLink, stages: {
+                'elec_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم الصناعية الكهربائية - المرحلة الأولى
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1jZ3fU7z7aUFxKIa4hFoBsWpN_k19AZUe/preview"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/11zGADipLPCOeeV4pYd-ZaJ-zFUoderbR/preview"),
+                    // التدريب العملي الكهربائي - المرحلة الأولى (الرابط المطلوب)
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1-FDXsHQNYPbQ6gSFdTvU70S13NawA0iE/preview"), 
+                ] },
+                'elec_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعية الكهربائية - المرحلة الثانية
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1V3O2fG3Ay0wpRzHu_uTY5EakgsqQI-GA/preview"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1lOrRKkOopZb32Bmw4ILWJe9rFYWEiGb4/preview"),
+                    // التدريب العملي الكهربائي - المرحلة الثانية
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1UO-jcnm7BhIW7–NkdAcmt2YQkO-JBZ-/view?usp=drivesdk"),
+                ] },
+                'elec_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الصناعية الكهربائية - المرحلة الثالثة
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1nDagm7HFt1lj4vsOsk6_dSYgwBxVGdIG/preview"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الثالث", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الثالثة
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1yC8O086OBo66IHPrVQfB0HCHFR41fmYF/preview"),
+                ] }
             }},
+            elecs: { name: "قسم الإلكترونيك والسيطرة", link: officialLink, stages: {
+                // تحديث كتب الإلكترونيك والسيطرة بالكتب الجديدة المقدمة
+                'elecs_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // أول إلكترون علوم
+                    createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1wvetwbh_wwu5Asfgtfb7K7GpGZXtm5vA/preview"),
+                    // الرسم الصناعي الإلكتروني - تم إزالة رابط التدريب العملي منه
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/16pQ4w6-BnqhOTb0igth7YEO8jwbI-lmi/preview"), 
+                    // التدريب العملي الإلكتروني - تم إضافة رابط التدريب العملي (مرحلة أولى) المطلوب
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1WFWj2QR5dZLXQs5pkVv6e1t7Wf_h0rdq/preview"), 
+                ] },
+                'elecs_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعيه الكترونيك الثاني
+                    createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MyvqU9lKs3ZfK_aeak4L-mdNUHOqwTn5/preview"),
+                    // الرسم الصناعي الكترونيك وسيطرة الثاني
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1Zl094Z0apla7_ZQPQ01DHs-PUfKccy9G/preview"),
+                    // التدريب العملي الإلكتروني - تم إضافة رابط التدريب العملي (مرحلة ثانية) المطلوب
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MB0u1mEz5tgjhRV-gAGZv5dwHRTwF8SR/preview"), 
+                ] },
+                'elecs_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الصناعي الكترونيك والسيطرة الثالثه
+                    createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1XssU-nGxtHEi3oHUqLFtHCRDLgNmgXjH/preview"),
+                    // الرسم الصناعي الكترونيك والسيطرة الثالث
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1hWdVITONaKf8p7D5wZqkYLJjfqIEql4X/preview"),
+                    // التدريب العملي إلكترون وسيطره الثالث مهني
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1l-b_ok2-Ogfxk7-mR6Bol99jlVqxplHd/preview"),
+                ] }
+            }},
+            media: { name: "قسم تكنولوجيا الإعلام", link: officialLink, stages: {
+                // تحديث كتب تكنولوجيا الإعلام بالكتب الجديدة المقدمة
+                'media_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم تكنلوجيا إعلام الاولى
+                    createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1OK95pQuOg3z40WyGFONyy-oYhHkRiUDD/preview"),
+                    // الرسم مرحلة أولى تكنلوجيا إعلام (تم التحديث)
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1imUBO6mxJcQcUhEKEpgs_CQ-Hr1uH3Xu/preview"), 
+                    // العملي تكنلوجيا إعلام الاول
+                    createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1HgOdWicSSPoL8YWCj2cqMETpnpW1MVP9/preview"),
+                ] },
+                'media_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعية تكنلوجيا إعلام الثاني
+                    createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1QaOaG39SWdRmPP_uD0S5VkgV4unYRCZ1/preview"),
+                    // الرسم الصناعي تكنلوجيا إعلام الثاني
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1xXyijQ89qYjo93J2a3eMy8TmzpBgprhe/preview"),
+                    // التدريب العملي تكنلوجيا إعلام الثاني مهني
+                    createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1FL0sjrjsCQYRraahDiFNoMVsHb0epKVD/preview"),
+                ] },
+                'media_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الثالث تكنلوجيا إعلام
+                    createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/15-0kmdpnlbGG228fRBJspH46tThwK56G/preview"),
+                    // الرسم الصناعي تكنلوجيا إعلام الصف الثالث مهني
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1zzbzuDKaJbED-1SAkw41wlN2fZb2UmF8/preview"),
+                    // التدريب العملي مرحلة الثالث مهني تكنلوجيا إعلام
+                    createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1Oz1NJoe2rmr55RtvEyh1Po3wqq0MHUFp/preview"),
+                ] }
+            }},
+            med: { name: "قسم الأجهزة الطبية", link: officialLink, stages: {
+                // تحديث كتب الأجهزة الطبية بالكتب الجديدة المقدمة
+                'med_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم الصناعيه الاول اجهزه طبيع
+                    createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1d8-I6mzRpCaoUPduexb5qNIVUWQ5aFg6/preview"),
+                    // التدريب العملي الصناعي اجهزه طبيه الاول
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1ezjvnuyaqtiA0KE8FSx_iPoWrxuBuDTC/preview"),
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1yCwrRiFadxH8aoy0gPrOKiTlhZtVBiTq/preview"), 
+                ] },
+                'med_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // علوم أجهزه طبيه الثاني
+                    createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1hBiVoeMEX1bXyN_9qnPAzwtLxZcaP1TY/preview"),
+                    // الرسم الصناعي اجهزه طبية الصف الثاني
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1KeJDy3y4swTwszo640Ts0Xjllga6i_U2/preview"),
+                    // التدريب العملي الاجهزه الطبية للصف الثاني
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1gU8tFy0gUxe_Sngx1U51hBlF01QO_ExY/preview"),
+                ] },
+                'med_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الاجهزه طبية الصف الثالث مهني 
+                    createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1RFvJKEfKmmDrUimYpd60iVfb05g-hQcQ/preview"),
+                    // رسم مرحلة ثالثه اجهزه طبية (تم التحديث)
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1qXF-gEcc1bFPxMQsN8k4eARjNvhqBZNv/preview"), 
+                    // العملي اجهزه طبية مرحلة ثالثة (تم التحديث)
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1elVyGMVsHGdTdHFzGhJfS6W2v0Ki2Idy/preview"), 
+                ] }
+            }},
+            general: { name: "المواد العامة المشتركة", link: officialLink, stages: {
+                'general_1': { name: stageNames['1'], books: generalSubjects['1'] },
+                'general_2': { name: stageNames['2'], books: generalSubjects['2'] },
+                'general_3': { name: stageNames['3'], books: generalSubjects['3'] }
+            }}
         };
         
         // ===========================================
@@ -954,7 +1627,7 @@
             
             updateProfileModal();
             
-            alert(`أهلاً وسهلاً بك يا ${name} في منصة أستاذ عادل محسن العربي! نتمنى لك تجربة موفقة. 😊`);
+            alert(`أهلاً وسهلاً بك يا ${name} في تطبيق إعدادية المنصور الصناعية! نتمنى لك تجربة موفقة. 😊`);
         }
 
         function updateProfileModal() {
@@ -962,8 +1635,7 @@
             const sectionKey = localStorage.getItem('studentSectionKey');
             const stageNumber = localStorage.getItem('studentStageNumber');
             
-            // التعديل: قسم واحد فقط
-            const sectionName = sectionKey === 'arabic' ? vocationalSections['arabic'].name : "غير محدد";
+            const sectionName = sectionKey ? vocationalSections[sectionKey].name : "غير محدد";
             const stageName = stageNumber ? stageNames[stageNumber] : "غير محدد";
 
             profileName.textContent = name;
@@ -985,7 +1657,7 @@
                 loginScreen.style.display = 'block';
                 
                 document.getElementById('studentName').value = '';
-                document.getElementById('studentSection').value = 'arabic'; // التعديل: الإبقاء على العربي كخيار افتراضي
+                document.getElementById('studentSection').value = '';
                 document.getElementById('studentStage').value = '';
                 document.getElementById('studentPassword').value = '';
                 loginErrorMessage.style.display = 'none';
@@ -1029,8 +1701,11 @@
                 updateProfileModal(); 
             } else if (modalId === 'myFavorites') {
                 displayFavorites();
-            } 
-            // التعديل: حذف حالة 'warningsPunishments' 
+            } else if (modalId === 'warningsPunishments') {
+                // دالة محاكاة لتحديث قائمة الإنذارات عند الفتح
+                // يمكنك تجاهل هذا إذا لم تكن بحاجة لقائمة إنذارات تفاعلية
+                updateSimulatedWarnings();
+            }
         }
         
         /**
@@ -1053,42 +1728,40 @@
         function populateSections() {
             const list = document.querySelector('#sections-container .stage-list');
             list.innerHTML = '';
-            
-            // التعديل: يتم عرض قسم واحد فقط (العربي)، لذا لن يكون لدينا قائمة أقسام فعلياً.
-            // نستخدم هذا الزر ليكون بمثابة زر "ابدأ التصفح" الذي ينتقل مباشرة للمراحل.
-            const key = 'arabic';
-            const section = vocationalSections[key];
-            
-            const listItem = document.createElement('li');
-            listItem.classList.add('stage-item');
-            listItem.dataset.search = section.name; 
-            
-            // التعديل: النقر ينتقل مباشرة إلى عرض المراحل
-            listItem.onclick = () => showStagesBySection(key); 
-            
-            listItem.innerHTML = `
-                <span>${section.name} (اضغط للتصفح المراحل)</span>
-                <span>&larr;</span>
-            `;
-            list.appendChild(listItem);
-            
-            // يمكن أيضاً الانتقال مباشرة لعرض المراحل إذا كان قسم واحد فقط
-            // showStagesBySection('arabic'); 
+            for (const key in vocationalSections) {
+                const section = vocationalSections[key];
+                const listItem = document.createElement('li');
+                listItem.classList.add('stage-item');
+                listItem.dataset.search = section.name; // إضافة خاصية البحث
+                
+                listItem.onclick = () => showStagesBySection(key);
+                
+                listItem.innerHTML = `
+                    <span>${section.name}</span>
+                    <span>&larr;</span>
+                `;
+                list.appendChild(listItem);
+            }
         }
         
         function filterBrowserContent() {
             const searchTerm = browserSearchInput.value.toLowerCase().trim();
             
-            // البحث في جميع الحاويات المرئية
-            const currentContainer = document.getElementById('stagesBrowser');
+            const currentContainer = document.querySelector('.modal-content > div:not([style*="display: none"])');
             const listItems = currentContainer ? currentContainer.querySelectorAll('.stage-item, .subject-item') : [];
 
             listItems.forEach(item => {
                 const itemText = item.textContent.toLowerCase();
-                const isMatch = itemText.includes(searchTerm);
-                item.style.display = isMatch ? 'flex' : 'none';
+                // التأكد من أن عنصر قائمة المفضلات لا يتم إخفاؤه
+                const isFavoriteListItem = item.closest('#favorites-list');
+
+                // إضافة شرط للبحث في حقل البحث إذا لم يكن في قائمة المفضلة
+                if (!isFavoriteListItem) {
+                    const isMatch = itemText.includes(searchTerm);
+                    item.style.display = isMatch ? 'flex' : 'none';
+                }
             });
-            
+            // تحديث رسالة قائمة المفضلة في حال كانت القائمة فارغة بعد الفلترة
             if (document.getElementById('myFavorites').style.display === 'flex') {
                 const visibleFavorites = Array.from(favoritesList.querySelectorAll('.favorite-list-item')).some(item => item.style.display !== 'none');
                 emptyFavoritesMessage.style.display = visibleFavorites ? 'none' : 'block';
@@ -1161,36 +1834,32 @@
                 favorites.forEach(fav => {
                     const listItem = document.createElement('li');
                     listItem.classList.add('favorite-list-item');
-                    // التعديل: استخدام اسم القسم الجديد
-                    const sectionName = vocationalSections[fav.sectionKey] ? vocationalSections[fav.sectionKey].name : "اللغة العربية"; 
-
                     listItem.innerHTML = `
                         <div>
                             ${fav.name}
-                            <span class="subject-details">${sectionName} - ${fav.stageName}</span>
+                            <span class="subject-details">${vocationalSections[fav.sectionKey].name} - ${fav.stageName}</span>
                         </div>
                         <button class="remove-favorite" onclick="event.stopPropagation(); removeFavorite('${fav.id}')">
                             حذف
                         </button>
                     `;
-                    
+                    // التعديل: ربط عنصر المفضلة بدالة فتح القارئ
+                    // نحتاج للبحث عن الكائن الكامل للمادة لضمان وجود الرابط
                     let book = null;
-                    if (vocationalSections[fav.sectionKey] && vocationalSections[fav.sectionKey].stages) {
-                         for (const stageKey in vocationalSections[fav.sectionKey].stages) {
-                             const stage = vocationalSections[fav.sectionKey].stages[stageKey];
-                             book = stage.books.find(b => b.id === fav.id);
-                             if (book) break;
-                         }
+                    for (const stageKey in vocationalSections[fav.sectionKey].stages) {
+                         const stage = vocationalSections[fav.sectionKey].stages[stageKey];
+                         book = stage.books.find(b => b.id === fav.id);
+                         if (book) break;
                     }
                     
                     if (book && book.link && book.link !== '#') {
                         listItem.onclick = () => openBookInReader(book);
                     }
-                    
+                    // ----------------------------------------------
                     favoritesList.appendChild(listItem);
                 });
             }
-            filterBrowserContent(); 
+            filterBrowserContent(); // لإظهار أو إخفاء العناصر وفقاً للبحث الحالي عند فتح المفضلة
         }
         
         function showSections() {
@@ -1198,12 +1867,6 @@
             stagesBySectionContainer.style.display = 'none';
             booksContainer.style.display = 'none';
             populateSections();
-            
-            // التعديل: بما أنه قسم واحد، ننتقل مباشرة لعرض المراحل بعد ثواني
-            setTimeout(() => {
-                 showStagesBySection('arabic');
-            }, 300);
-            
             filterBrowserContent();
         }
 
@@ -1222,16 +1885,14 @@
                 const stage = section.stages[stageKey];
                 const listItem = document.createElement('li');
                 listItem.classList.add('stage-item');
-                // التعديل: البحث في اسم المرحلة فقط
-                listItem.dataset.search = stage.name; 
+                listItem.dataset.search = `${stage.name} ${section.name}`; 
                 
                 const stageNum = stageKey.split('_')[1]; 
                 
-                // التعديل: النقر ينتقل إلى عرض الكتب/الدروس
                 listItem.onclick = () => showBooks(sectionKey, stageNum, stage.name);
                 
                 listItem.innerHTML = `
-                    <span>${stage.name} - ${stageNames[stageNum]}</span>
+                    <span>${stage.name}</span>
                     <span>&larr;</span>
                 `;
                 stagesListBySection.appendChild(listItem);
@@ -1264,7 +1925,7 @@
             const books = stage.books || [];
 
             if (books.length === 0) {
-                subjectsList.innerHTML = '<p style="color: #dc3545; margin-top: 20px; font-weight: 700;">لا توجد كتب/دروس متوفرة لهذه المرحلة حالياً.</p>';
+                subjectsList.innerHTML = '<p style="color: #dc3545; margin-top: 20px; font-weight: 700;">لا توجد كتب متوفرة لهذا القسم والمرحلة حالياً.</p>';
                 return;
             }
 
@@ -1276,7 +1937,7 @@
                     stageName: stageName,
                     sectionKey: sectionKey,
                     edition: book.edition,
-                    link: book.link 
+                    link: book.link // إضافة الرابط في كائن المادة
                 };
 
                 const isFav = isFavorite(subject.id);
@@ -1300,11 +1961,11 @@
                     <span>&larr;</span>
                 `;
                 
+                // التعديل الرئيسي: ربط النقر بفتح القارئ الرقمي (إذا كان الرابط موجوداً)
                 if (book.link && book.link !== '#') {
                     listItem.onclick = () => openBookInReader(book);
                 } else {
-                    // التعديل: تغيير نص التنبيه
-                    listItem.onclick = () => alert(`المادة/الملزمة "${book.name}" غير متوفرة برابط مباشر حالياً. قد تجدها في قناة الأستاذ على التيليجرام.`);
+                    listItem.onclick = () => alert(`المادة "${book.name}" غير متوفرة برابط مباشر حالياً.`);
                 }
                 
                 subjectsList.appendChild(listItem);
@@ -1324,6 +1985,7 @@
             }
 
             // تحويل رابط المشاركة (view) إلى رابط التضمين (preview)
+            // نستخدم التعبير العادي لضمان استبدال أي جزء بعد /d/FILE_ID/ إما بـ /preview
             const embedLink = book.link.replace(/(\/d\/[a-zA-Z0-9_-]+)(\/.*)?/, '$1/preview');
             
             // تحديث عنوان النافذة
@@ -1339,6 +2001,7 @@
             };
             
             // احتياط: فتح الرابط مباشرة في نافذة جديدة في حالة عدم تحميل الـ iframe بشكل صحيح
+            // نفتح نافذة جديدة بعد فترة زمنية قصيرة كحل احتياطي للروابط التي قد لا تُفتح في وضع التضمين
             setTimeout(() => {
                 // إذا لم يتم تحميل الـ iframe أو كانت هناك مشكلة في العرض، نفتح الرابط في نافذة جديدة
                 // هذا يضمن أن المستخدم يستطيع الوصول للمادة حتى لو فشل القارئ الداخلي
@@ -1376,7 +2039,7 @@
         }
         
         // ===========================================
-        // ==  دالة محاكاة رد الذكاء الاصطناعي (مُعدلة للعربي)  ==
+        // ==  دالة محاكاة رد الذكاء الاصطناعي (جديدة)  ==
         // ===========================================
 
         function getAIResponse() {
@@ -1397,16 +2060,20 @@
             setTimeout(() => {
                 let simulatedResponse = '';
                 
-                // ردود مُعدلة لتناسب مادة اللغة العربية
-                if (prompt.includes('الاستفهام') || prompt.includes('استفهم')) {
-                    simulatedResponse = '**الاستفهام** هو طلب الفهم أو المعرفة بشيء لم يكن معلوماً للسائل. أدواته تنقسم إلى حروف (الهمزة، هل) وأسماء (من، ما، كيف، متى، أين، إلخ). الهمزة و "هل" حرفان لا محل لهما من الإعراب.';
-                } else if (prompt.includes('التقديم') || prompt.includes('التأخير')) {
-                    simulatedResponse = 'قاعدة **تقديم الخبر على المبتدأ** وجوباً تحدث في حالات معينة، مثل: إذا كان الخبر من الألفاظ التي لها الصدارة في الكلام (مثل أسماء الاستفهام). مثال: *متى السفرُ؟* (متى: اسم استفهام مبني في محل رفع خبر مقدم وجوباً).';
-                } else if (prompt.includes('النفي') || prompt.includes('لا') || prompt.includes('لم')) {
-                    simulatedResponse = 'النفي هو إنكار حدوث شيء. من أدواته المهمة: **ليست** (فعل ماضٍ ناقص يفيد النفي، يعمل عمل كان). **ما النافية الحجازية** (تعمل عمل ليس بشروط). و **لا النافية للجنس** (تعمل عمل إن بشروط).';
-                } else if (prompt.includes('المدح') || prompt.includes('الذم') || prompt.includes('نعم')) {
-                    simulatedResponse = 'أفعال **المدح والذم** هي *نعم* و *بئس*. لها أربع حالات للفاعل، أشهرها أن يكون الفاعل مُحلى بـ *ال*. مثال: نعمَ **الرجلُ** محمدٌ.';
-                } else {
+                // إضافة ردود أكثر تفصيلاً ومخصصة للمواد
+                if (prompt.includes('نظرية') || prompt.includes('اشرح') || prompt.includes('قانون أوم')) {
+                    simulatedResponse = 'قانون أوم (Ohm\'s Law) هو أساس الهندسة الكهربائية، ينص على أن **التيار (I)** المار في موصل يتناسب طرديًا مع **فرق الجهد (V)** وعكسيًا مع **المقاومة (R)**. الصيغة هي: $V = I \\times R$';
+                } else if (prompt.includes('المايكروكونترولر')) {
+                    simulatedResponse = 'المايكروكونترولر (Microcontroller) هو حاسوب متكامل صغير الحجم مدمج على شريحة واحدة. يُستخدم في قسم الإلكترونيك للتحكم بأجهزة معينة، ويحتوي على معالج (CPU)، ذاكرة، ووحدات إدخال/إخراج، مما يجعله مثاليًا لتطبيقات السيطرة والتحكم.';
+                } else if (prompt.includes('التصوير') || prompt.includes('كاميرا') && prompt.includes('إعلام')) {
+                    simulatedResponse = 'في قسم تكنولوجيا الإعلام، يُعد **عمق المجال (Depth of Field)** مفهوماً أساسياً. وهو المنطقة التي تظهر واضحة في الصورة (Sharp). التحكم به يتم عبر فتحة العدسة (Aperture): فتحة واسعة = عمق قليل، وفتحة ضيقة = عمق كبير.';
+                } else if (prompt.includes('تشريح') || prompt.includes('أجهزة طبية')) {
+                    simulatedResponse = 'الجهاز الطبي الأساسي الذي يجب معرفته هو جهاز تخطيط القلب (ECG). وظيفته تسجيل النشاط الكهربائي للقلب. وهو موضوع مهم في مادة الأجهزة الطبية التشخيصية.';
+                } 
+                 else if (prompt.includes('حل') && prompt.includes('رياضيات')) {
+                    simulatedResponse = 'لحل المعادلات، تذكر دائماً عزل المتغير (x). إذا كنت تتعامل مع معادلات تفاضلية، تأكد من تحديد نوع المعادلة وطريقة الحل المناسبة لها (مثل فصل المتغيرات أو عامل التكامل).';
+                }
+                else {
                     simulatedResponse = 'عفواً، لا أستطيع الإجابة على هذا السؤال الآن، لكن يرجى العلم بأن هذه الميزة هي في مرحلة المحاكاة وستتوفر قريباً بشكل تفاعلي حقيقي. يمكنك التواصل مع الدعم الفني بالأسفل.';
                 }
                 
@@ -1419,12 +2086,145 @@
         }
         
         // ===========================================
-        // == تم حذف جميع الدوال المتعلقة بالانذارات والغيابات ==
+        // ==    دالة محاكاة البحث والتعديل (مضافة بناءً على طلبك)    ==
         // ===========================================
+
+        const simulatedWarningsData = [
+            { student: "أحمد سعيد", record: "غياب غير مبرر", date: "2025/11/01" },
+            { student: "علي محمود", record: "مخالفة للزي المدرسي", date: "2025/10/28" },
+            { student: "محمد جاسم", record: "غياب غير مبرر 3 أيام", date: "2025/10/25" },
+            { student: "ايهم فراس جمال", record: "إنذار رقم 1 (تأخير)", date: "2025/10/10" },
+        ];
+        
+        function updateSimulatedWarnings() {
+             const sharedList = document.getElementById('shared-warnings-list');
+             if (!sharedList) return;
+             
+             // مسح القائمة الحالية (لتجنب التكرار عند إعادة فتح الـ modal)
+             sharedList.innerHTML = '';
+             
+             simulatedWarningsData.forEach(data => {
+                  const listItem = document.createElement('li');
+                  listItem.classList.add('stage-item');
+                  listItem.innerHTML = `
+                      <span>الطالب: ${data.student}</span>
+                      <span style="color: #dc3545;">سجل: ${data.record} (تاريخ: ${data.date})</span>
+                  `;
+                  sharedList.appendChild(listItem);
+             });
+        }
+
+
+        /**
+         * دالة لمحاكاة البحث عن طالب بالاسم وفتح نافذة تعديل وهمية.
+         * ملاحظة: تتطلب قاعدة بيانات حقيقية للتطبيق الفعلي.
+         */
+        function searchAndEditAbsences() {
+            const studentNameInput = document.getElementById('admin-search-student-name');
+            const studentName = studentNameInput.value.trim();
+            const searchResultElement = document.getElementById('admin-search-result');
+            const sharedList = document.getElementById('shared-warnings-list');
+
+            // قائمة محاكاة للطلاب المسجلين
+            const studentsDatabase = [
+                "أحمد سعيد",
+                "علي محمود",
+                "سارة خليل",
+                "محمد جاسم",
+                "ايهم فراس جمال" // اسم المبرمج للتجربة
+            ];
+
+            if (studentName === "") {
+                searchResultElement.textContent = "الرجاء إدخال اسم الطالب للبحث.";
+                searchResultElement.style.display = 'block';
+                return;
+            }
+            
+            // إخفاء رسالة الخطأ قبل البحث
+            searchResultElement.style.display = 'none';
+
+            // التحقق من وجود الاسم (البحث يجب أن يكون متطابقاً للمحاكاة)
+            const foundStudent = studentsDatabase.find(name => name === studentName);
+
+            if (foundStudent) {
+                // إذا تم العثور على الطالب، افتح نافذة تعديل وهمية
+                const studentRecord = getStudentSimulatedRecord(foundStudent);
+                
+                const newWarning = prompt(`تم العثور على سجل الطالب: ${foundStudent}. 
+سجله الحالي (محاكاة): ${studentRecord.warnings} إنذار و ${studentRecord.absences} يوم غياب.
+
+أدخل الآن أي إنذار أو غياب جديد لهذا الطالب:`);
+
+                if (newWarning !== null && newWarning.trim() !== "") {
+                    // محاكاة إضافة السجل الجديد إلى القائمة المشتركة
+                    const today = new Date().toLocaleDateString('ar-IQ', { year: 'numeric', month: '2-digit', day: '2-digit' });
+                    
+                    const newRecord = { student: foundStudent, record: newWarning.trim(), date: today };
+                    simulatedWarningsData.unshift(newRecord); // إضافة السجل الجديد في البداية
+                    
+                    updateSimulatedWarnings(); // إعادة رسم القائمة
+
+                    alert(`تمت إضافة السجل بنجاح للطالب ${foundStudent}. هذا السجل سيظهر الآن للجميع في القائمة المشتركة.`);
+                } else if (newWarning !== null) {
+                     alert(`لم يتم إضافة سجل جديد للطالب ${foundStudent}.`);
+                }
+                
+            } else {
+                // إذا لم يتم العثور على الطالب
+                searchResultElement.textContent = `لم يتم العثور على الطالب: "${studentName}". يرجى التأكد من كتابة الاسم بالكامل.`;
+                searchResultElement.style.display = 'block';
+            }
+        }
+
+        /**
+         * دالة محاكاة للحصول على سجل طالب
+         */
+        function getStudentSimulatedRecord(name) {
+            // بسيطة لغرض المحاكاة
+            if (name.includes('أحمد سعيد')) return { warnings: 1, absences: 0 };
+            if (name.includes('علي محمود')) return { warnings: 0, absences: 5 };
+            if (name.includes('سارة خليل')) return { warnings: 1, absences: 0 };
+            if (name.includes('ايهم فراس جمال')) return { warnings: 2, absences: 0 };
+            return { warnings: 0, absences: 0 };
+        }
         
         // تهيئة الوضع الليلي/النهاري وحالة الدخول عند التحميل 
+        
+        
         document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
+            const splash = document.getElementById('splash-screen');
+            const progressBar = document.getElementById('main-progress-bar');
+            
+            // تهيئة الوضع الليلي فوراً
+            let savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    hideSplash();
+                } else {
+                    width += 1;
+                    if(progressBar) progressBar.style.width = width + '%';
+                }
+            }, 20);
+
+            const hideSplash = () => {
+                setTimeout(() => {
+                    if(splash) {
+                        splash.style.opacity = '0';
+                        setTimeout(() => {
+                            splash.style.visibility = 'hidden';
+                        }, 500);
+                    }
+                }, 500);
+            };
+
+
+            
             const autoDarkModeCheckbox = document.getElementById('autoDarkMode');
             
             if (savedTheme === 'dark') {
@@ -1449,6 +2249,8 @@
                 if (supportFab) { supportFab.style.display = 'flex'; supportFab.classList.remove('hidden'); }
                 
                 updateProfileModal();
+                loadProfilePicture(); // **تمت الإضافة: تحميل الصورة الشخصية عند التحميل**
+                populateAvatars(); // **تمت الإضافة: ملء شبكة الصور الجاهزة عند التحميل**
             } else {
                 loginScreen.style.display = 'block';
                 mainAppContainer.style.display = 'none';
@@ -1461,11 +2263,16 @@
             
             // تهيئة قائمة الأقسام عند التحميل لأول مرة
             if (sectionsContainer) {
-                 // بما أن القسم واحد فقط، ننتقل مباشرة لعرض المراحل
-                 showStagesBySection('arabic');
+                 populateSections();
             }
             
-            // تم حذف دالة تهيئة قائمة الانذارات
+            // تهيئة قائمة الانذارات
+            updateSimulatedWarnings();
+            
+            // **تمت الإضافة: تهيئة الوضع الليلي/النهاري عند التحميل**
+            if (autoDarkModeCheckbox) {
+                autoDarkModeCheckbox.checked = savedTheme === 'dark';
+            }
         });
 
         // إغلاق النافذة عند النقر خارجها
@@ -1478,7 +2285,435 @@
         // ربط زر تبديل الوضع الخارجي بدالة التبديل
         if (modeToggle) modeToggle.addEventListener('click', toggleDarkMode);
         
-        // تم حذف ربط حقل البحث في نافذة الإدارة (لأن النافذة حُذفت)
-    </script>
+        // ربط حقل البحث في نافذة الإدارة بحدث الإدخال
+        const adminSearchInput = document.getElementById('admin-search-student-name');
+        if (adminSearchInput) {
+            adminSearchInput.addEventListener('keyup', (event) => {
+                if (event.keyCode === 13) {
+                    searchAndEditAbsences();
+                }
+            });
+        }
+        
+        // ربط حقل البحث الرئيسي بحدث الإدخال
+        if (mainSearchInput) {
+            mainSearchInput.addEventListener('input', syncSearchInput);
+        }
+        
+        // ربط حقل البحث في المتصفح بحدث الإدخال
+        if (browserSearchInput) {
+            browserSearchInput.addEventListener('input', filterBrowserContent);
+        }
+        
+        // **تمت الإضافة: ربط زر تبديل الوضع الخارجي بدالة التبديل**
+        if (modeToggle) modeToggle.addEventListener('click', toggleDarkMode);
+
+        // ===========================================
+        // =    وظائف الآلة الحاسبة                  =
+        // ===========================================
+
+        function appendToCalc(value) {
+            const display = document.getElementById('calc-display');
+            
+            // منع إدخال عمليات متتالية
+            if (['+', '-', '*', '/'].includes(value)) {
+                const lastChar = display.value[display.value.length - 1];
+                if (['+', '-', '*', '/'].includes(lastChar)) {
+                    return;
+                }
+            }
+            
+            display.value += value;
+        }
+
+        function clearCalc() {
+            const display = document.getElementById('calc-display');
+            display.value = '';
+        }
+
+        function deleteLastChar() {
+            const display = document.getElementById('calc-display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculateResult() {
+            const display = document.getElementById('calc-display');
+            try {
+                if (display.value === '') {
+                    return;
+                }
+                
+                // التحقق من العمليات الصحيحة
+                const expression = display.value.replace(/÷/g, '/').replace(/×/g, '*').replace(/−/g, '-');
+                
+                // تقييم العملية الحسابية
+                const result = Function('"use strict"; return (' + expression + ')')();
+                
+                // تنسيق النتيجة
+                if (Number.isFinite(result)) {
+                    display.value = Math.round(result * 100000000) / 100000000;
+                } else {
+                    display.value = 'خطأ';
+                }
+            } catch (error) {
+                display.value = 'خطأ في الصيغة';
+                setTimeout(() => {
+                    display.value = '';
+                }, 2000);
+            }
+        }
+
+        // ===========================================
+        // =    وظائف سجل الملاحظات                 =
+        // ===========================================
+
+        function loadNotes() {
+            const savedNotes = localStorage.getItem('notes');
+            if (savedNotes) {
+                return JSON.parse(savedNotes);
+            }
+            return [];
+        }
+
+        function saveNotes(notes) {
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        function addNote() {
+            const titleInput = document.getElementById('note-title');
+            const contentInput = document.getElementById('note-content');
+            
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            
+            if (!title || !content) {
+                alert('يرجى ملء عنوان الملاحظة والمحتوى');
+                return;
+            }
+            
+            const note = {
+                id: Date.now(),
+                title: title,
+                content: content,
+                date: new Date().toLocaleDateString('ar-SA')
+            };
+            
+            let notes = loadNotes();
+            notes.unshift(note);
+            
+            saveNotes(notes);
+            
+            titleInput.value = '';
+            contentInput.value = '';
+            
+            displayNotes();
+            
+            alert('تم حفظ الملاحظة بنجاح!');
+        }
+
+        function displayNotes() {
+            const notes = loadNotes();
+            const notesList = document.getElementById('notes-list');
+            const emptyMessage = document.getElementById('empty-notes');
+            
+            notesList.innerHTML = '';
+            
+            if (notes.length === 0) {
+                emptyMessage.style.display = 'block';
+            } else {
+                emptyMessage.style.display = 'none';
+                
+                notes.forEach(note => {
+                    const noteItem = document.createElement('li');
+                    noteItem.style.cssText = 'background-color: var(--input-bg); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-right: 4px solid var(--primary-color);';
+                    
+                    noteItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="flex: 1;">
+                                <h4 style="color: var(--primary-color); margin-bottom: 8px; margin-top: 0;">${note.title}</h4>
+                                <p style="color: var(--text-color); margin: 8px 0; white-space: pre-wrap; word-wrap: break-word;">${note.content}</p>
+                                <small style="color: #999; display: block; margin-top: 8px;">📅 ${note.date}</small>
+                            </div>
+                            <button onclick="deleteNote(${note.id})" style="background-color: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 700; margin-right: 10px;">حذف</button>
+                        </div>
+                    `;
+                    
+                    notesList.appendChild(noteItem);
+                });
+            }
+        }
+
+        function deleteNote(noteId) {
+            if (confirm('هل أنت متأكد من حذف هذه الملاحظة؟')) {
+                let notes = loadNotes();
+                notes = notes.filter(note => note.id !== noteId);
+                saveNotes(notes);
+                displayNotes();
+            }
+        }
+
+
+    // --- منطق ميزة التدريب على الرسم الهندسي ---
+    let canvas, ctx;
+    let isDrawing = false;
+    let startX, startY;
+    let currentX, currentY;
+    let tSquareY = 100;
+    let autoCorrect = true;
+
+    function initDrawingBoard() {
+        canvas = document.getElementById('drawingCanvas');
+        if (!canvas) return;
+        ctx = canvas.getContext('2d');
+        
+        // ضبط الحجم
+        const container = canvas.parentElement;
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        
+        // دعم اللمس
+        canvas.addEventListener('touchstart', (e) => { 
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousedown", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, { passive: false });
+        
+        canvas.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousemove", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, { passive: false });
+        
+        canvas.addEventListener('touchend', (e) => {
+            const mouseEvent = new MouseEvent("mouseup", {});
+            canvas.dispatchEvent(mouseEvent);
+        }, { passive: false });
+    }
+
+    function startDrawing(e) {
+        isDrawing = true;
+        const rect = canvas.getBoundingClientRect();
+        startX = e.clientX - rect.left;
+        startY = e.clientY - rect.top;
+        
+        // الالتزام بالمسطرة T إذا كانت قريبة
+        if (Math.abs(startY - tSquareY) < 25) {
+            startY = tSquareY;
+        }
+    }
+
+    function draw(e) {
+        const rect = canvas.getBoundingClientRect();
+        const mouseY = e.clientY - rect.top;
+        
+        if (!isDrawing) {
+            // تحريك المسطرة
+            if (mouseY > 0 && mouseY < canvas.height) {
+                tSquareY = mouseY;
+                document.getElementById('tSquare').style.top = tSquareY + 'px';
+            }
+            return;
+        }
+        
+        currentX = e.clientX - rect.left;
+        currentY = e.clientY - rect.top;
+    }
+
+    function stopDrawing() {
+        if (!isDrawing) return;
+        isDrawing = false;
+
+        // التصحيح التلقائي
+        if (autoCorrect) {
+            // تصحيح أفقي
+            if (Math.abs(currentY - startY) < 30) {
+                currentY = startY;
+            }
+            // تصحيح عمودي
+            else if (Math.abs(currentX - startX) < 30) {
+                currentX = startX;
+            }
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(currentX, currentY);
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+    }
+
+    function clearBoard() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function toggleAutoCorrect() {
+        autoCorrect = !autoCorrect;
+        const btn = document.getElementById('toggleCorrectBtn');
+        btn.textContent = autoCorrect ? 'التصحيح: مفعل' : 'التصحيح: معطل';
+        btn.style.backgroundColor = autoCorrect ? 'var(--primary-color)' : '#777';
+    }
+
+    // ========================================
+    // دوال التحكم بنافذة تدريب الرسم المنبثقة
+    // ========================================
+
+    /**
+     * فتح نافذة ملاحظة تدريب الرسم
+     */
+    function openDrawingTrainingModal() {
+        const modal = document.getElementById('drawingTrainingModal');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // منع التمرير خلف النافذة
+    }
+
+    /**
+     * إغلاق نافذة ملاحظة تدريب الرسم
+     */
+    function closeDrawingTrainingModal() {
+        const modal = document.getElementById('drawingTrainingModal');
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // استعادة التمرير
+    }
+
+    /**
+     * إغلاق النافذة عند الضغط خارجها
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('drawingTrainingModal');
+        
+        if (modal) {
+            modal.addEventListener('click', function(event) {
+                // إذا تم الضغط على خلفية النافذة (وليس على المحتوى)
+                if (event.target === modal) {
+                    closeDrawingTrainingModal();
+                }
+            });
+        }
+    });
+
+    /**
+     * دعم لوحة المفاتيح - إغلاق النافذة بالضغط على Escape
+     */
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeDrawingTrainingModal();
+        }
+    });
+        </script>
+
+    <!-- نافذة التدريب على الرسم الهندسي -->
+    <div id="drawingTraining" class="modal">
+        <div class="modal-content" style="max-width: 800px; width: 95%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="color: var(--primary-color); margin: 0;">تدريب الرسم الهندسي</h2>
+                <button onclick="closeModal('drawingTraining')" style="background: none; font-size: 1.5rem; color: var(--text-color);">✕</button>
+            </div>
+            
+            <div class="drawing-board-container">
+                <div id="tSquare" class="t-square"></div>
+                <canvas id="drawingCanvas"></canvas>
+            </div>
+            
+            <div class="drawing-controls">
+                <button class="draw-btn" onclick="clearBoard()" style="background-color: #dc3545;">مسح اللوحة</button>
+                <button id="toggleCorrectBtn" class="draw-btn" onclick="toggleAutoCorrect()">التصحيح: مفعل</button>
+                <button class="draw-btn" onclick="alert('استخدم المسطرة T للرسم الأفقي الدقيق. القلم سيصحح نفسه تلقائياً عند الخطأ.')">تعليمات</button>
+            </div>
+            
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #666; text-align: center;">
+                * حرك الماوس لتغيير موقع مسطرة T. ارسم بالقرب منها للحصول على خطوط أفقية مثالية.
+            </p>
+        </div>
+    </div>
+
+    <!-- النافذة المنبثقة لملاحظة تدريب الرسم -->
+    <div class="drawing-training-modal" id="drawingTrainingModal">
+        <div class="drawing-training-modal-content">
+            <!-- زر الإغلاق -->
+            <button class="drawing-training-modal-close" onclick="closeDrawingTrainingModal()">&times;</button>
+
+            <!-- رأس النافذة -->
+            <div class="drawing-training-modal-header">
+                <span class="icon">📐</span>
+                <h2>تدريب الرسم الهندسي</h2>
+                <p>ملاحظات مهمة قبل البدء</p>
+            </div>
+
+            <!-- محتوى النافذة -->
+            <div class="drawing-training-modal-body">
+                <!-- قسم معلومات المدرسة -->
+                <div class="drawing-training-section">
+                    <h3>
+                        <span class="section-icon">👨‍🏫</span>
+                        مُدرسة المادة
+                    </h3>
+                    <div class="instructor-name">
+                        المهندسة: ضحى عواد خلف
+                    </div>
+                </div>
+
+                <!-- قسم الأدوات المطلوبة -->
+                <div class="drawing-training-section">
+                    <h3>
+                        <span class="section-icon">🛠️</span>
+                        الأدوات والمستلزمات المطلوبة
+                    </h3>
+                    <p>يجب توفير الأدوات التالية قبل بدء التدريب:</p>
+                    
+                    <table class="tools-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>الأداة</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tool-number">1</td>
+                                <td class="tool-name">بورد رسم</td>
+                                <td>لوحة الرسم - سطح عمل مستوٍ وثابت ومناسب للرسم الهندسي</td>
+                            </tr>
+                            <tr>
+                                <td class="tool-number">2</td>
+                                <td class="tool-name">مسطرة حرف T</td>
+                                <td>أداة أساسية لرسم الخطوط الأفقية المتوازية والعمودية بدقة عالية</td>
+                            </tr>
+                            <tr>
+                                <td class="tool-number">3</td>
+                                <td class="tool-name">مسطرة دوائر</td>
+                                <td>قالب الدوائر - لتسهيل رسم الدوائر والأقواس بأحجام مختلفة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- تنبيه مهم -->
+                <div class="important-note">
+                    <p>
+                        <span class="note-icon">⚠️</span>
+                        <strong>تنبيه مهم:</strong> تأكد من توفير جميع الأدوات المذكورة أعلاه قبل الدخول إلى الجلسة التدريبية لضمان أقصى استفادة من التدريب.
+                    </p>
+                </div>
+            </div>
+
+            <!-- تذييل النافذة -->
+            <div class="drawing-training-modal-footer">
+                <button onclick="closeDrawingTrainingModal()">فهمت - ابدأ التدريب</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
